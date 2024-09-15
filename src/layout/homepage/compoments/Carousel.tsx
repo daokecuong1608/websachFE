@@ -1,56 +1,75 @@
-function Carousel() {
+import React, { useEffect, useState } from "react";
+import SachModel from "../../../models/SachModel";
+import { lay_3_Sach } from "../../../api/SachAPI";
+import CarouselItem from "./CarouselItem";
+
+const Carousel: React.FC = () => {
+
+    const [danhSachQuyenSach, setDanhSachQuyenSach] = useState<SachModel[]>([]);
+    const [dangTaiDuLieu, setDangTaiDuLieu] = useState(true);
+    const [baoLoi, setBaoLoi] = useState(null);
+
+    //chỉ gọi 1 lần duy nhất khi component được render
+    useEffect(() => {
+        lay_3_Sach().then(
+            sachData => {
+                setDanhSachQuyenSach(sachData);
+                setDangTaiDuLieu(false);
+            }
+        ).catch(
+            error => {
+                setDangTaiDuLieu(false);
+                setBaoLoi(error.message);
+            }
+        )
+    }, [])
+
+    if (dangTaiDuLieu) {
+        return (
+            <div>
+                <h1>Đang tải dữ liệu </h1>
+            </div>
+        )
+    }
+
+    if (baoLoi) {
+        return (
+            <div>
+                <h1>Gặp lỗi : {baoLoi}  </h1>
+            </div>
+        )
+    }
+
+
+
     return (
         <div>
             <div id="carouselExampleDark" className="carousel carousel-dark slide">
                 <div className="carousel-inner">
-
                     <div className="carousel-item active" data-bs-interval="10000">
-                        <div className="row align-items-center">
-                            <div className="col-5 text-center">
-                                <img src="" className="float-end" style={{ width: '150px' }} />
-                            </div>
-                            <div className="col-7">
-                                <h5>First slide label</h5>
-                                <p>Some representative placeholder content for the firts slide</p>
-                            </div>
-                        </div>
+
+                        <CarouselItem
+                            key={0}
+                            sach={danhSachQuyenSach[0]}
+                        />
+
                     </div>
 
                     <div className="carousel-item" data-bs-interval="10000">
-                        <div className="row align-items-center">
-                            <div className="col-5 text-center">
-                                <img src={'./../../'} className="float-end" style={{ width: '150px' }} />
-                            </div>
-                            <div className="col-7">
-                                <h5>First slide label</h5>
-                                <p>Some representative placeholder content for the firts slide</p>
-                            </div>
-                        </div>
+                        <CarouselItem
+                            key={1}
+                            sach={danhSachQuyenSach[1]}
+                        />
                     </div>
 
                     <div className="carousel-item" data-bs-interval="10000">
-                        <div className="row align-items-center">
-                            <div className="col-5 text-center">
-                                <img src='' className="float-end" style={{ width: '150px' }} />
-                            </div>
-                            <div className="col-7">
-                                <h5>First slide label</h5>
-                                <p>Some representative placeholder content for the firts slide</p>
-                            </div>
-                        </div>
+                        <CarouselItem
+                            key={2}
+                            sach={danhSachQuyenSach[2]}
+                        />
                     </div>
 
-                    <div className="carousel-item" data-bs-interval="10000">
-                        <div className="row align-items-center">
-                            <div className="col-5 text-center">
-                                <img src='' className="float-end" style={{ width: '150px' }} />
-                            </div>
-                            <div className="col-7">
-                                <h5>First slide label</h5>
-                                <p>Some representative placeholder content for the firts slide</p>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
 
 

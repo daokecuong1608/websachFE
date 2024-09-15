@@ -3,12 +3,10 @@ import SachModel from "../models/SachModel";
 import my_request from "./Request";
 
 
-
-export async function layToanBoSach(): Promise<SachModel[]> {
+async function laySach(duongDan: string): Promise<SachModel[]> {
     const ketQua: SachModel[] = [];
 
-    //xac dinh endpoint
-    const duongDan: string = 'http://localhost:8080/sach';
+
 
     //goi ham request
     const reponse = await my_request(duongDan);
@@ -32,4 +30,17 @@ export async function layToanBoSach(): Promise<SachModel[]> {
     }
 
     return ketQua;
+}
+
+
+export async function layToanBoSach(): Promise<SachModel[]> {
+    //xac dinh endpoint
+    const duongDan: string = 'http://localhost:8080/sach?sort=maSach,desc';
+    return laySach(duongDan);
+}
+
+export async function lay_3_Sach(): Promise<SachModel[]> {
+    //xac dinh endpoint
+    const duongDan: string = 'http://localhost:8080/sach?sort=maSach,desc&page=0&size=3';
+    return laySach(duongDan);
 }
