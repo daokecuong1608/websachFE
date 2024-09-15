@@ -1,17 +1,64 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Book from "../../../models/Book";
 import SachModel from "../../../models/SachModel";
+import HinhAnhModel from "../../../models/HinhAnhModels";
+import { layToanBoAnhCuaMotSach } from "../../../api/HinhAnhApi";
 
 interface SachPropsInterface {
     sach: SachModel;
 }
 
 const SachProps: React.FC<SachPropsInterface> = (props) => {
+
+    const maSach: number = props.sach.maSach;
+
+    const [danhSachHinhAnh, setDanhSachHinhAnh] = useState<HinhAnhModel[]>([]);
+    const [dangTaiDuLieu, setDangTaiDuLieu] = useState(true);
+    const [baoLoi, setBaoLoi] = useState(null);
+
+    useEffect(() => {
+
+        layToanBoAnhCuaMotSach(maSach).then(
+            hinhAnhData => {
+                setDanhSachHinhAnh(hinhAnhData);
+                setDangTaiDuLieu(false);
+            }
+        ).catch(
+            error => {
+                setDangTaiDuLieu(false);
+                setBaoLoi(error.message);
+            }
+        )
+    }, []
+    )
+
+    if (dangTaiDuLieu) {
+        return (
+            <div>
+                <h1>Đang tải dữ liệu </h1>
+            </div>
+        )
+    }
+
+    if (baoLoi) {
+        return (
+            <div>
+                <h1>Gặp lỗi : {baoLoi}  </h1>
+            </div>
+        )
+    }
+
+    let deLieuHinhAnh: string = "";
+    if (danhSachHinhAnh[0] && danhSachHinhAnh[0].duLieuAnh) {
+        deLieuHinhAnh = danhSachHinhAnh[0].duLieuAnh;
+    }
+
     return (
         <div className="col-md-3 mt-2">
             <div className="card">
+
                 <img
-                    src={""}
+                    src={deLieuHinhAnh}
                     className="card-img-top"
                     alt={props.sach.tenSach}
                     style={{ height: "200px" }}
@@ -19,11 +66,11 @@ const SachProps: React.FC<SachPropsInterface> = (props) => {
                 <div className="card-body">
                     <h5 className="card-title">{props.sach.tenSach}</h5>
                     <p className="card-text">{props.sach.moTa}</p>
-                    <div className="price">
-                        <span className="original-price">
+                    <div className="price row">
+                        <span className="original-price col-6 text-end">
                             <del>{props.sach.giaNiemYet}</del>
                         </span>
-                        <span className="discounted-price">
+                        <span className="discounted-price col-6 text-end">
                             <strong>{props.sach.giaBan}đ</strong>
                         </span>
                     </div>
