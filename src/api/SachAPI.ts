@@ -2,45 +2,70 @@ import React from "react";
 import SachModel from "../models/SachModel";
 import my_request from "./Request";
 
-
-async function laySach(duongDan: string): Promise<SachModel[]> {
-    const ketQua: SachModel[] = [];
-
-
-
-    //goi ham request
-    const reponse = await my_request(duongDan);
-
-    //lay ra json sach 
-    const responseData = reponse._embedded.saches;
-
-    for (const key in responseData) {
-        {
-            ketQua.push({
-                maSach: responseData[key].maSach,
-                tenSach: responseData[key].tenSach,
-                giaBan: responseData[key].giaBan,
-                giaNiemYet: responseData[key].giaNiemYet,
-                moTa: responseData[key].moTa,
-                soLuong: responseData[key].soLuong,
-                tenTacGia: responseData[key].tenTacGia,
-                trungBinhXepHang: responseData[key].trungBinhXepHang
-            });
-        }
-    }
-
-    return ketQua;
+interface KetQuaInterface {
+    ketQua: SachModel[];
+    tongSoTrang: number;
+    tongSoSach: number;
 }
 
+async function laySach(duongDan: string): Promise<KetQuaInterface> {
+    //lấy dữ liệu từ server
+    const ketQua: SachModel[] = [];
+    //Gọi phuonmg thức request để lấy dữ liệu
+    const response = await my_request(duongDan);
+    //lay ra json tù sach dữ liệu
+    const reponseData = response._embedded.saches;
+    console.log(response);
 
-export async function layToanBoSach(): Promise<SachModel[]> {
-    //xac dinh endpoint
-    const duongDan: string = 'http://localhost:8080/sach?sort=maSach,desc';
+
+    //lấy thong tin trang 
+    const tongSoTrang: number = response.page.totalPages;
+    const tongSoSach: number = response.page.totalElements;
+
+    for (const key in reponseData) {
+        ketQua.push({
+            maSach: reponseData[key].maSach,
+            tenSach: reponseData[key].tenSach,//co the la undefined
+            giaBan: reponseData[key].giaBan,
+            giaNiemYet: reponseData[key].giaNiemYet,
+            moTa: reponseData[key].moTa,
+            soLuong: reponseData[key].soLuong,
+            tenTacGia: reponseData[key].tenTacGia,
+            trungBinhXepHang: reponseData[key].trungBinhXepHang
+
+            //đưa sách vào mảng
+            // ketQua.push(sachModel);
+        });
+
+        // const sach = reponseData[key];
+        // //tạo một đối tượng sách
+        // const sachModel = new SachModel(
+        //     sach.maSach,
+        //     sach.tenSach,
+        //     sach.giaBan,
+        //     sach.giaNiemYet,
+        //     sach.moTa,
+        //     sach.soLuong,
+        //     sach.tenTacGia,
+        //     sach.trungBinhXepHang
+        // );
+        // //      đưa sách vào mảng
+        // ketQua.push(sachModel);
+
+    }
+
+    console.log(ketQua);
+    return { ketQua: ketQua, tongSoSach: tongSoSach, tongSoTrang: tongSoTrang };
+}
+
+export async function layToanBoSach(trang: number): Promise<KetQuaInterface> {
+    //xấc định endpoint
+    const duongDan: string = `http://localhost:8080/sach?sort=maSach,desc&size=8&page=${trang}`;
     return laySach(duongDan);
 }
 
-export async function lay_3_Sach(): Promise<SachModel[]> {
-    //xac dinh endpoint
+export async function lay_3_Sach(): Promise<KetQuaInterface> {
+    //xấc định endpoint
     const duongDan: string = 'http://localhost:8080/sach?sort=maSach,desc&page=0&size=3';
     return laySach(duongDan);
 }

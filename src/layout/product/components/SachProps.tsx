@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Book from "../../../models/Book";
 import SachModel from "../../../models/SachModel";
 import HinhAnhModel from "../../../models/HinhAnhModels";
-import { layToanBoAnhCuaMotSach } from "../../../api/HinhAnhApi";
+import { lay_1_AnhCuaMotSach, layToanBoAnhCuaMotSach } from "../../../api/HinhAnhApi";
 
 interface SachPropsInterface {
     sach: SachModel;
@@ -18,7 +18,7 @@ const SachProps: React.FC<SachPropsInterface> = (props) => {
 
     useEffect(() => {
 
-        layToanBoAnhCuaMotSach(maSach).then(
+        lay_1_AnhCuaMotSach(maSach).then(
             hinhAnhData => {
                 setDanhSachHinhAnh(hinhAnhData);
                 setDangTaiDuLieu(false);

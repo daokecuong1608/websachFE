@@ -12,8 +12,8 @@ const Carousel: React.FC = () => {
     //chỉ gọi 1 lần duy nhất khi component được render
     useEffect(() => {
         lay_3_Sach().then(
-            sachData => {
-                setDanhSachQuyenSach(sachData);
+            kq => {
+                setDanhSachQuyenSach(kq.ketQua);
                 setDangTaiDuLieu(false);
             }
         ).catch(
