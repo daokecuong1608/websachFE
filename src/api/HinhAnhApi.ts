@@ -30,7 +30,7 @@ async function layAnhCua_1_Sach(duongDan: string): Promise<HinhAnhModel[]> {
 
 
 export async function layToanBoAnhCuaMotSach(maSach: number): Promise<HinhAnhModel[]> {
-    //xac dinh endpoint
+    //xac dinh    
     const duongDan: string = `http://localhost:8080/sach/${maSach}/danhSachHinhAnh`;
     return layAnhCua_1_Sach(duongDan);
 }
