@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import SachModel from "../../models/SachModel";
 import { laySachTheoMaSach } from "../../api/SachAPI";
 import { error } from "console";
+import HinhAnhSanPham from "./components/HinhAnhSanPham";
+import DanhGiaSanPham from "./components/DanhGiaSanPham";
 
 
 
@@ -69,7 +71,7 @@ const ChiTietSanPham: React.FC = () => {
         <div className="container">
             <div className="row mt-4">
                 <div className="col-4 mb-4">
-                    {sach.maSach}
+                    <HinhAnhSanPham maSach={maSachNumber} />
                 </div>
                 <div className="col-8">
                     <div className="row">
@@ -96,7 +98,7 @@ const ChiTietSanPham: React.FC = () => {
             </div>
 
             <div className="row mt-4">
-                PHẦN REVIEW
+                <DanhGiaSanPham maSach={maSachNumber} />
             </div>
         </div>
     );

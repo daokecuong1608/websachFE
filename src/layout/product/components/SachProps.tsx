@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Book from "../../../models/Book";
 import SachModel from "../../../models/SachModel";
 import HinhAnhModel from "../../../models/HinhAnhModels";
 import { lay_1_AnhCuaMotSach, layToanBoAnhCuaMotSach } from "../../../api/HinhAnhApi";
@@ -68,7 +67,7 @@ const SachProps: React.FC<SachPropsInterface> = (props) => {
                     <Link to={`/sach/${props.sach.maSach}`} style={{ textDecoration: 'none' }} >
                         <h5 className="card-title">{props.sach.tenSach}</h5>
                     </Link>
-                    <p className="card-text">{props.sach.moTa}</p>
+                    {/* <p className="card-text">{props.sach.moTa}</p> */}
                     <div className="price row">
                         <span className="original-price col-6 text-end">
                             <del>{props.sach.giaNiemYet}</del>

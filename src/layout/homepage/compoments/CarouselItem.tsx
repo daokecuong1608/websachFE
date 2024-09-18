@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Book from "../../../models/Book";
 import SachModel from "../../../models/SachModel";
 import HinhAnhModel from "../../../models/HinhAnhModels";
 import { lay_1_AnhCuaMotSach } from "../../../api/HinhAnhApi";
