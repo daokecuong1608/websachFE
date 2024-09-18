@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import SachModel from "../../../models/SachModel";
 import HinhAnhModel from "../../../models/HinhAnhModels";
 import { lay_1_AnhCuaMotSach } from "../../../api/HinhAnhApi";
+import renderRating from "../../utlis/RenderRating";
+import DinhDangSo from "../../utlis/DinhDangSo";
 
 interface CarouselItemInterface {
     sach: SachModel;
@@ -59,7 +61,9 @@ const CarouselItem: React.FC<CarouselItemInterface> = (props) => {
             </div>
             <div className="col-7">
                 <h5>{props.sach.tenSach}</h5>
-                <p>{props.sach.moTa}</p>
+                <p> Giá bán :  {DinhDangSo(props.sach.giaBan ? props.sach.giaBan : 0)}</p>
+                <p>Tác giả :  {props.sach.tenTacGia}</p>
+                {/* <p>{props.sach.moTa}</p> */}
             </div>
         </div>
 

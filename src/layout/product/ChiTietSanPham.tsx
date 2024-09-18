@@ -5,6 +5,8 @@ import { laySachTheoMaSach } from "../../api/SachAPI";
 import { error } from "console";
 import HinhAnhSanPham from "./components/HinhAnhSanPham";
 import DanhGiaSanPham from "./components/DanhGiaSanPham";
+import renderRating from "../utlis/RenderRating";
+import DinhDangSo from "../utlis/DinhDangSo";
 
 
 
@@ -46,6 +48,8 @@ const ChiTietSanPham: React.FC = () => {
     }, [maSach]
     )
 
+
+
     if (dangTaiDuLieu) {
         return (
             <div>
@@ -80,10 +84,10 @@ const ChiTietSanPham: React.FC = () => {
                                 {sach.tenSach}
                             </h1>
                             <h4>
-                                {sach.trungBinhXepHang}
+                                {renderRating(sach.trungBinhXepHang ? sach.trungBinhXepHang : 0)}
                             </h4>
                             <h4>
-                                {sach.giaBan}
+                                {DinhDangSo(sach.giaBan ? sach.giaBan : 0)}
                             </h4>
                             <hr />
                             <div dangerouslySetInnerHTML={{ __html: (sach.moTa + '') }} />
@@ -91,7 +95,9 @@ const ChiTietSanPham: React.FC = () => {
                             <hr />
                         </div>
                         <div className="col-4">
-                            PHẦN ĐẶT HÀNG
+
+
+
                         </div>
                     </div>
                 </div>

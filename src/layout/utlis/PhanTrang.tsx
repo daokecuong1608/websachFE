@@ -1,4 +1,5 @@
 import React from 'react';
+import './PhanTrang.css';
 interface PhanTrangInterface {
     trangHienTai: number;
     tongSoTrang: number;

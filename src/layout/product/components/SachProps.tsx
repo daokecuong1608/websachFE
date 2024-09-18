@@ -3,6 +3,8 @@ import SachModel from "../../../models/SachModel";
 import HinhAnhModel from "../../../models/HinhAnhModels";
 import { lay_1_AnhCuaMotSach, layToanBoAnhCuaMotSach } from "../../../api/HinhAnhApi";
 import { Link } from "react-router-dom";
+import renderRating from "../../utlis/RenderRating";
+import DinhDangSo from "../../utlis/DinhDangSo";
 
 interface SachPropsInterface {
     sach: SachModel;
@@ -70,22 +72,23 @@ const SachProps: React.FC<SachPropsInterface> = (props) => {
                     {/* <p className="card-text">{props.sach.moTa}</p> */}
                     <div className="price row">
                         <span className="original-price col-6 text-end">
-                            <del>{props.sach.giaNiemYet}</del>
+                            <del>{DinhDangSo(props.sach.giaNiemYet ? props.sach.giaNiemYet : 0)}</del>
                         </span>
-                        <span className="discounted-price col-6 text-end">
-                            <strong>{props.sach.giaBan}đ</strong>
+                        <span className="discounted-price col-6 ">
+                            <strong>{DinhDangSo(props.sach.giaBan ? props.sach.giaBan : 0)}</strong>
                         </span>
                     </div>
                     <div className="row mt-2" role="group">
                         <div className="col-6">
+                            {renderRating(props.sach.trungBinhXepHang ? props.sach.trungBinhXepHang : 0)}
+                        </div>
+                        <div className="col-6 text-end ">
                             <a href="#" className="btn btn-secondary btn-block">
                                 <i className="fas fa-heart"></i>
                             </a>
-                        </div>
-                        <div className="col-6">
-                            <a href="#" className="btn btn-danger btn-block">
+                            <button className="btn btn-danger btn-block">
                                 <i className="fas fa-shopping-cart"></i>
-                            </a>
+                            </button>
                         </div>
                     </div>
                 </div>

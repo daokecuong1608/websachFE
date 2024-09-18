@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import { Carousel } from "react-responsive-carousel";
 import { layToanBoDanhGiaCuaMotSach } from "../../../api/DanhGiaAPI";
 import DanhGiaModel from "../../../models/DanhGiaModel";
+import { StarFill } from "react-bootstrap-icons";
+import renderRating from "../../utlis/RenderRating";
 
 interface DanhGiaSanPham {
     maSach: number;
@@ -35,6 +37,8 @@ const DanhGiaSanPham: React.FC<DanhGiaSanPham> = (props) => {
     }, []
     )
 
+
+
     console.log(danhSachDanhGia.length)
 
     if (dangTaiDuLieu) {
@@ -60,7 +64,7 @@ const DanhGiaSanPham: React.FC<DanhGiaSanPham> = (props) => {
                 danhSachDanhGia.map((danhGia, index) => (
                     <div className="row">
                         <div className="col-4 text-end">
-                            <h3>{danhGia.diemXepHang}</h3>
+                            <h3>{renderRating(danhGia.diemXepHang ? danhGia.diemXepHang : 0)}</h3>
                         </div>
                         <div className="col-8 text-start">
                             <p>{danhGia.nhanXet}</p>

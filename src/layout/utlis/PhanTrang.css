@@ -1,0 +1,39 @@
+.pagination-container {
+    /* cách thuc hien thi cac phan tu */
+    display        : flex;
+    /* sử dụng để căn chỉnh các phần tử con trong một container */
+    justify-content: center;
+    margin-top     : 20px;
+    /* Adjust as needed */
+}
+
+.pagination {
+    display   : flex;
+    list-style: none;
+    /* kc tu vien va phan tu trang (đệm) */
+    padding   : 0;
+    /* kc tu hop den phan tu ngoai cung cua phan trang(lề) */
+    margin    : 0;
+}
+
+.page-item {
+    margin: 0 5px;
+    /* Adjust spacing between page items */
+}
+
+.page-link {
+    padding         : 10px 15px;
+    /* đường viền của phần tử */
+    border          : 1px solid #ddd;
+    background-color: #fff;
+    /* ịnh kiểu con trỏ chuột khi người dùng di chuyển chuột qua một phần tử */
+    cursor          : pointer;
+    /* thay đổi vị trí của văn bản */
+    text-decoration : none;
+    color           : #007bff;
+}
+
+.page-link.active {
+    background-color: #007bff;
+    color           : white;
+}

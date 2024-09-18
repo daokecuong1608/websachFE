@@ -22,7 +22,7 @@ async function layDanhGiaCua_1_Sach(duongDan: string): Promise<DanhGiaModel[]> {
         });
 
     }
-    console.log("số lượng : " + ketQua.length);
+    // console.log("số lượng : " + ketQua.length);
     return ketQua;
 
 }

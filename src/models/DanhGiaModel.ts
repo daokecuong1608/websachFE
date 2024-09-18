@@ -8,7 +8,6 @@ class DanhGiaModel {
         this.maDanhGia = maDanhGia;
         this.diemXepHang = diemXepHang;
         this.nhanXet = nhanXet;
-
     }
 
 }
