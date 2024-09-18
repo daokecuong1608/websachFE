@@ -1,7 +1,7 @@
 function About() {
     return (
         <div className="container">
-            <h1></h1>
+            <h1>Đây là trang About</h1>
         </div>
     )
 }

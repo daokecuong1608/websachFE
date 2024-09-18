@@ -3,6 +3,7 @@ import Book from "../../../models/Book";
 import SachModel from "../../../models/SachModel";
 import HinhAnhModel from "../../../models/HinhAnhModels";
 import { lay_1_AnhCuaMotSach, layToanBoAnhCuaMotSach } from "../../../api/HinhAnhApi";
+import { Link } from "react-router-dom";
 
 interface SachPropsInterface {
     sach: SachModel;
@@ -17,7 +18,6 @@ const SachProps: React.FC<SachPropsInterface> = (props) => {
     const [baoLoi, setBaoLoi] = useState(null);
 
     useEffect(() => {
-
         lay_1_AnhCuaMotSach(maSach).then(
             hinhAnhData => {
                 setDanhSachHinhAnh(hinhAnhData);
@@ -56,15 +56,18 @@ const SachProps: React.FC<SachPropsInterface> = (props) => {
     return (
         <div className="col-md-3 mt-2">
             <div className="card">
-
-                <img
-                    src={deLieuHinhAnh}
-                    className="card-img-top"
-                    alt={props.sach.tenSach}
-                    style={{ height: "200px" }}
-                />
+                <Link to={`/sach/${props.sach.maSach}`} >
+                    <img
+                        src={deLieuHinhAnh}
+                        className="card-img-top"
+                        alt={props.sach.tenSach}
+                        style={{ height: "200px" }}
+                    />
+                </Link>
                 <div className="card-body">
-                    <h5 className="card-title">{props.sach.tenSach}</h5>
+                    <Link to={`/sach/${props.sach.maSach}`} style={{ textDecoration: 'none' }} >
+                        <h5 className="card-title">{props.sach.tenSach}</h5>
+                    </Link>
                     <p className="card-text">{props.sach.moTa}</p>
                     <div className="price row">
                         <span className="original-price col-6 text-end">

@@ -84,3 +84,40 @@ export async function timKiemSach(tuKhoaTimKiem: string, maTheLoai: number): Pro
     }
     return laySach(duongDan);
 }
+
+export async function laySachTheoMaSach(maSach: number): Promise<SachModel | null> {
+
+    const duongDan: string = `http://localhost:8080/sach/${maSach}`;
+    //lấy dữ liệu từ server
+    let ketQua: SachModel;
+
+    try {
+        //Gọi phuonmg thức request để lấy dữ liệu
+        const response = await fetch(duongDan);
+        if (!response.ok) {
+            throw new Error("Không thể lấy dữ liệu từ server");
+        }
+
+        //lay ra json tù sach dữ liệu
+        const sachData = await response.json();
+
+        if (sachData) {
+            return {
+                maSach: sachData.maSach,
+                tenSach: sachData.tenSach,//co the la undefined
+                giaBan: sachData.giaBan,
+                giaNiemYet: sachData.giaNiemYet,
+                moTa: sachData.moTa,
+                soLuong: sachData.soLuong,
+                tenTacGia: sachData.tenTacGia,
+                trungBinhXepHang: sachData.trungBinhXepHang
+            }
+        } else {
+            throw new Error("Sách không tồn tại");
+        }
+    } catch (error) {
+        console.log("lỗi ", error);
+        return null;
+    }
+
+}

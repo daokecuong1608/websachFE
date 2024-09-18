@@ -1,5 +1,5 @@
 import { ChangeEvent, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 interface NavbarProps {
     tuKhoaTimKiem: string
@@ -36,35 +36,35 @@ function Navbar({ tuKhoaTimKiem, setTuKhoaTimKiem }: NavbarProps) {
                     id="navbarSupportedContent">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <a className="nav-link activ" aria-current="page">
+                            <NavLink className="nav-link activ" aria-current="page" to="/" >
                                 Trang chủ
-                            </a>
+                            </NavLink>
                         </li>
 
                         <li className="nav-item dropdown">
-                            <Link className="nav-link dropdown-toggle"
+                            <NavLink className="nav-link dropdown-toggle"
                                 to="#" id="navbarDropdown_1"
                                 role="button"
                                 data-bs-toggle="dropdown"
                                 aria-expanded="false">
                                 Thể loại sách
-                            </Link>
+                            </NavLink>
                             <ul className="dropdown-menu"
                                 aria-labelledby="navbarDropdown_1">
                                 <li>
-                                    <Link className="dropdown-item" to="/1">
+                                    <NavLink className="dropdown-item" to="/1">
                                         Thể loại 1
-                                    </Link>
+                                    </NavLink>
                                 </li>
                                 <li>
-                                    <Link className="dropdown-item" to="/2">
+                                    <NavLink className="dropdown-item" to="/2">
                                         Thể loại 2
-                                    </Link>
+                                    </NavLink>
                                 </li>
                                 <li>
-                                    <Link className="dropdown-item" to="/3">
+                                    <NavLink className="dropdown-item" to="/3">
                                         Thể loại 3
-                                    </Link>
+                                    </NavLink>
                                 </li>
                             </ul>
                         </li>
