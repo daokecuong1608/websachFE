@@ -10,6 +10,7 @@ import DangKyNguoiDung from './layout/user/DangKyNguoiDung';
 import KichHoatTaiKhoan from './layout/user/KichHoatTaiKhoan';
 import DangNhap from './layout/user/DangNhap';
 import Test from './layout/user/Test';
+import SachForm from './layout/admin/SachForm';
 
 function App() {
 
@@ -33,6 +34,8 @@ function App() {
           <Route path='/kichHoat/:email/:maKichHoat' element={<KichHoatTaiKhoan />} />
           <Route path='/dangNhap' element={<DangNhap />} />
           <Route path='/test' element={<Test />} />
+          <Route path='/admin/themSach' element={<SachForm />} />
+
 
         </Routes>
         {/* chan Trang */}
