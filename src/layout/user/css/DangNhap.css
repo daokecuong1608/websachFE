@@ -1,0 +1,74 @@
+/* DangNhap.css */
+
+/* Container chính cho phần đăng nhập */
+
+.login-container {
+    width           : 90%;
+    /* Chiếm 80% chiều rộng màn hình */
+    margin          : auto;
+    /* Căn giữa container */
+    display         : flex;
+    /* Sử dụng flexbox để căn giữa nội dung */
+    justify-content : center;
+    /* Căn giữa theo chiều ngang */
+    align-items     : center;
+    /* Căn giữa theo chiều dọc */
+    height          : 90vh;
+    /* Chiều cao đầy đủ của viewport */
+    background-color: rgb(205, 221, 221);
+}
+
+/* Form đăng nhập */
+.form-signin {
+    width           : 60%;
+    /* Chiếm 60% chiều rộng của container */
+    padding         : 20px;
+    /* Thêm khoảng cách bên trong form */
+    background-color: rgb(220, 211, 211);
+    /* Màu nền trắng cho form */
+    border-radius   : 8px;
+    /* Bo tròn góc cho form */
+    box-shadow      : 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Đổ bóng nhẹ cho form */
+
+}
+
+/* Header của form */
+.header {
+    display        : flex;
+    /* Sử dụng flexbox để sắp xếp nội dung */
+    justify-content: space-between;
+    /* Khoảng cách giữa các phần tử */
+    align-items    : center;
+    /* Căn giữa theo chiều dọc */
+}
+
+/* Nút đăng ký */
+.btn {
+    margin-left: 10px;
+    /* Thêm khoảng cách giữa nút và văn bản */
+}
+
+/* Checkbox */
+.checkbox {
+    display    : flex;
+    /* Sử dụng flexbox cho checkbox */
+    align-items: center;
+    /* Căn giữa checkbox với nhãn */
+}
+
+/* Văn bản quên mật khẩu và quay lại trang chính */
+.forgot-password,
+.back {
+    color : #007bff;
+    /* Màu sắc cho liên kết */
+    cursor: pointer;
+    /* Hiển thị con trỏ khi di chuột */
+}
+
+/* Hiệu ứng hover cho văn bản liên kết */
+.forgot-password:hover,
+.back:hover {
+    text-decoration: underline;
+    /* Gạch chân khi di chuột */
+}

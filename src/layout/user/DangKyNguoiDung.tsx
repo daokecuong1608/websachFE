@@ -19,16 +19,65 @@ function DangKyNguoiDung() {
     const [errorEmail, setErrorEmail] = useState('');
     //xử lý sự kiện submit
     const handleSubmit = async (e: React.FormEvent) => {
+        //clear any prevision error massage
+        setErrorTenDangNhap('');
+        setErrorEmail('');
+        setErrorMatKhau('');
+        setErrorMatKhauNhapLai('');
+
+        //tránh click liên tuc
+        e.preventDefault();
+
+        //kiểm tra các điều kiện và gắn kết quả vào biến
+        const isTenDangNhapValid = !await kiemTraTenDangNhapDaTonTai(tenDangNhap);
+        const isEmailValid = !await kiemTraEmailTonTai(email);
+        const isMatKhauValid = !kiemTraMatKhau(matKhau);
+        const isMatKhauNhapLaiValid = !kiemTraMatKhauNhapLai(matKhauNhapLai);
+
+        //kiểm tra các điều kiện
+        if (isTenDangNhapValid && isEmailValid && isMatKhauValid && isMatKhauNhapLaiValid) {
+            try {
+                const url = 'http://localhost:8080/tai-khoan/dang-ky';
+                console.log('url', url);
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        tenDangNhap: tenDangNhap,
+                        email: email,
+                        matKhau: matKhau,
+                        hoDem: hoDem,
+                        ten: ten,
+                        soDienThoai: soDienThoai,
+                        gioiTinh: gioiTinh,
+                        daKichHoat: 0,
+                        maKichHoat: ""
+                    })
+                }
+                )
+                if (response.ok) {
+                    setThongBao('Đăng ký thành công , vui lòng kiểm tra email để kích hoạt.');
+                } else {
+                    console.log('response', response.json());
+                    setThongBao('Đăng ký không thành công , vui lòng thử lại sau.');
+                }
+            } catch (error) {
+                setThongBao('Đăng ký không thành công , vui lòng thử lại sau.');
+            }
+        }
 
     }
-
+    //kiểm tra tên đăng nhập đã tồn tại chưa
     const kiemTraTenDangNhapDaTonTai = async (tenDangNhap: string) => {
         const url = `http://localhost:8080/nguoi-dung/search/existsByTenDangNhap?tenDangNhap=${tenDangNhap}`
+        console.log('url', url);
         //call api
         try {
             const response = await fetch(url);
             const data = await response.text();
-            if (data === 'true') {
+            if (data === "true") {
                 setErrorTenDangNhap('Tên đăng nhập đã tồn tại')
                 return true;
             }
@@ -52,6 +101,7 @@ function DangKyNguoiDung() {
     //kiểm tra email đã tồn tại chưa
     const kiemTraEmailTonTai = async (email: string) => {
         const url = `http://localhost:8080/nguoi-dung/search/existsByEmail?email=${email}`
+        console.log('url', url);
         //call api
         try {
             const response = await fetch(url);
@@ -59,13 +109,9 @@ function DangKyNguoiDung() {
             if (data === "true") {
                 setErrorEmail('Email đã tồn tại');
                 return true;
-            } else {
-                // if (!validateEmail(email)) {
-                //     setErrorEmail('Email không hợp lệ');
-                //    return true;
-                // }
-                return false;
             }
+            return false;
+
         } catch (error) {
             console.log("error", error);
             return false;
@@ -116,7 +162,9 @@ function DangKyNguoiDung() {
         <div className="container">
             <h1 className="mt-5 text-center">Đăng ký </h1>
             <div className="mb-3 col-md-6 col-12 mx-auto">
-                <form onSubmit={handleSubmit}>
+
+                <form onSubmit={handleSubmit} className="form">
+
                     <div className="mb-3">
                         <label htmlFor="tenDangNhap" className="form-label">Tên đăng nhập</label>
                         <input type="text"
@@ -136,8 +184,10 @@ function DangKyNguoiDung() {
                             onChange={handleEmail} />
                         <div style={{ color: "red" }}>{errorEmail}</div>
                     </div>
+
+
                     <div className="mb -3">
-                        <label className="form-label">Mật khẩu</label>
+                        <label className="form-label" htmlFor="matKhau" >Mật khẩu</label>
                         <input type="password"
                             id="matKhau"
                             className="form-control"
@@ -146,8 +196,9 @@ function DangKyNguoiDung() {
                         <div style={{ color: "red" }}> {errorMatKhau}</div>
                     </div>
 
+
                     <div className="mb -3">
-                        <label className="form-label">Nhập lại mật khẩu</label>
+                        <label className="form-label" htmlFor="matKhauNhapLai">Nhập lại mật khẩu</label>
                         <input type="password"
                             id="matKhauNhapLai"
                             className="form-control"
@@ -156,8 +207,9 @@ function DangKyNguoiDung() {
                         <div style={{ color: "red" }}> {errorMatKhauNhapLai}</div>
                     </div>
 
+
                     <div className="mb -3">
-                        <label className="form-label">Họ đệm</label>
+                        <label className="form-label" htmlFor="hoDem">Họ đệm</label>
                         <input type="text"
                             id="hoDem"
                             className="form-control"
@@ -165,8 +217,9 @@ function DangKyNguoiDung() {
                             onChange={(e) => setHoDem(e.target.value)} />
                     </div>
 
+
                     <div className="mb -3">
-                        <label className="form-label">Tên</label>
+                        <label className="form-label" htmlFor="ten">Tên</label>
                         <input type="text"
                             id="ten"
                             className="form-control"
@@ -174,10 +227,8 @@ function DangKyNguoiDung() {
                             onChange={(e) => setTen(e.target.value)} />
                     </div>
 
-
-
                     <div className="mb -3">
-                        <label className="form-label">Số điện thoại:</label>
+                        <label className="form-label" htmlFor="soDienThoai">Số điện thoại:</label>
                         <input type="text"
                             id="soDienThoai"
                             className="form-control"
@@ -187,20 +238,21 @@ function DangKyNguoiDung() {
 
                     </div>
 
+
                     <div className="mb-3">
                         <label className="form-label" htmlFor="gioiTinh">Giới tính:</label>
                         <select
                             id="gioiTinh"
                             className="form-control"
                             value={gioiTinh}
-                            onChange={(e) => setGioiTinh(e.target.value)}
-                        >
+                            onChange={(e) => setGioiTinh(e.target.value)} >
                             <option value=""></option>
                             <option value="nam">XY</option>
                             <option value="nu">XX</option>
                             <option value="khac">Khác</option>
                         </select>
                     </div>
+
 
                     <div className="text-center">
                         <button type="submit" className="btn btn-primary">Đăng ký</button>
