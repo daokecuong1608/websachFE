@@ -1,0 +1,41 @@
+.form-container-httt {
+    width           : 60%;
+    margin          : 0 auto;
+    padding         : 20px;
+    border          : 1px solid #ccc;
+    border-radius   : 8px;
+    background-color: #f9f9f9;
+}
+
+.form-group-httt {
+    margin-bottom: 15px;
+}
+
+.form-group-httt label {
+    display      : block;
+    margin-bottom: 5px;
+    font-weight  : bold;
+}
+
+.form-group-httt input {
+    width        : 100%;
+    padding      : 8px;
+    box-sizing   : border-box;
+    border       : 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.submit-button-httt {
+    display         : inline-block;
+    padding         : 10px 20px;
+    font-size       : 16px;
+    color           : #fff;
+    background-color: #969ba1;
+    border          : none;
+    border-radius   : 4px;
+    cursor          : pointer;
+}
+
+.submit-button-httt:hover {
+    background-color: #0056b3;
+}

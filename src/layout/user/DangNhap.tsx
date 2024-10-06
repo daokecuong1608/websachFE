@@ -37,7 +37,7 @@ const DangNhap = () => {
                     //lưu trữ jwt vào local storage(bộ nhớ) or cookie
                     localStorage.setItem('token', jwt);
                     //chuyển hướng sang trang chủ
-                    // window.location.href = '/';
+                    window.location.href = '/';
                     setError('Đang nhập thành công ');
                 }
             ).catch(error => {
@@ -49,13 +49,11 @@ const DangNhap = () => {
     }
 
     return (
-
         <div className="login-container">
-
             <form className="form-signin">
                 <div className='header '>
                     <span> Don't have an account yet ?</span>
-                    <button className='btn btn-secondary' onClick={() => { navigate('/register') }} >Sign up</button>
+                    <button className='btn btn-secondary' onClick={() => { navigate('/dangKy') }} >Sign up</button>
                 </div>
                 <h1 className="h3 mb-3 font-weight-normal">Login</h1>
                 <label className="sr-only" >User name</label>

@@ -1,0 +1,45 @@
+.chi-tiet-don-hang-form {
+    width           : 60%;
+    margin          : 0 auto;
+    padding         : 20px;
+    border          : 1px solid #ccc;
+    border-radius   : 5px;
+    box-shadow      : 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #eee8e8;
+}
+
+.chi-tiet-don-hang-form div {
+    margin-bottom: 15px;
+}
+
+.chi-tiet-don-hang-form label {
+    display      : block;
+    margin-bottom: 5px;
+    font-weight  : bold;
+}
+
+.chi-tiet-don-hang-form input {
+    width        : 100%;
+    padding      : 8px;
+    box-sizing   : border-box;
+    border       : 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.chi-tiet-don-hang-form span {
+    color    : red;
+    font-size: 12px;
+}
+
+.chi-tiet-don-hang-form button {
+    padding         : 10px 15px;
+    background-color: #131d2a;
+    color           : #fff;
+    border          : none;
+    border-radius   : 4px;
+    cursor          : pointer;
+}
+
+.chi-tiet-don-hang-form button:hover {
+    background-color: #8daa3e;
+}

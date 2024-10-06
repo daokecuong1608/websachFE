@@ -1,0 +1,14 @@
+.error-page {
+    margin-top : 50px;
+    width      : 60%;
+    /* Chiếm 60% màn hình */
+    margin     : 0 auto;
+    /* Căn giữa màn hình */
+    padding-top: 20px;
+    padding    : 20px;
+    /* Khoảng cách bên trong */
+    border     : 2px solid #ff0000;
+    /* Đường viền đỏ */
+    text-align : center;
+    /* Căn giữa nội dung */
+}

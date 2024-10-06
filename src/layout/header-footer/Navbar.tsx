@@ -1,6 +1,6 @@
 import { ChangeEvent, useState } from "react";
 import { Search } from "react-bootstrap-icons";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 interface NavbarProps {
     tuKhoaTimKiem: string
@@ -9,6 +9,7 @@ interface NavbarProps {
 
 function Navbar({ tuKhoaTimKiem, setTuKhoaTimKiem }: NavbarProps) {
 
+    const navigate = useNavigate();
     const [tuKhoaTamThoi, setTuKhoaTamthoi] = useState('');
 
     //khi nhap ND vao o tim kiem 
@@ -134,10 +135,9 @@ function Navbar({ tuKhoaTimKiem, setTuKhoaTimKiem }: NavbarProps) {
                 {/* //Biểu tượng đăng nhập  */}
                 <ul className="navbar-nav me-1">
                     <li className="nav-item">
-                        <a className="nav-link" href="#">
-
+                        <Link className="nav-link" to="/dangNhap">
                             <i className="fas fa-user"></i>
-                        </a>
+                        </Link>
                     </li>
                 </ul>
 

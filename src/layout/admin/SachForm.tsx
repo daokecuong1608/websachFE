@@ -1,9 +1,10 @@
 import React, { FormEvent, useState } from 'react';
+import RequireAdmin from './RequireAdmin';
 
 
-const SachForm: React.FC = () => {
+const SachForm: React.FC = (props) => {
     const [sach, setSach] = useState({
-        maSach: '',
+        maSach: '0',
         tenSach: '',
         IBNS: '',
         giaBan: 0,
@@ -28,10 +29,11 @@ const SachForm: React.FC = () => {
                 body: JSON.stringify(sach)
             }
         ).then((reponse) => {
+            console.log("aaa" + reponse);
             if (reponse.ok) {
                 alert('Thêm sách thành công');
                 setSach({
-                    maSach: '',
+                    maSach: '0',
                     tenSach: '',
                     IBNS: '',
                     giaBan: 0,
@@ -53,7 +55,7 @@ const SachForm: React.FC = () => {
     return (
         <div className='container row đ-flex align-items-center  justify-content-center'>
             <div className='col-6'>
-                <h1>THỂM SÁCH</h1>
+                <h1>THÊM SÁCH</h1>
                 <form onSubmit={handleSubmit}>
                     <input type="hidden"
                         name="maSach"
@@ -138,10 +140,11 @@ const SachForm: React.FC = () => {
                         required
                         onChange={(e) => setSach({ ...sach, IBNS: e.target.value })} />
 
-                    <button type='submit' className='btn btn-primary'>Thêm sách</button>
+                    <button type='submit' className='btn btn-primary mt-2'>Thêm sách</button>
                 </form>
             </div>
         </div>
     )
 }
-export default SachForm; 
+const SachForm_Admin = RequireAdmin(SachForm);
+export default SachForm_Admin; 

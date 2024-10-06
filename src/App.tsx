@@ -11,6 +11,14 @@ import KichHoatTaiKhoan from './layout/user/KichHoatTaiKhoan';
 import DangNhap from './layout/user/DangNhap';
 import Test from './layout/user/Test';
 import SachForm from './layout/admin/SachForm';
+import SachForm_Admin from './layout/admin/SachForm';
+import Error403 from './layout/error/Error_403';
+import ChiTietDonHangForm_Admin from './layout/admin/ChiTietDonHangForm';
+import ChiTietDonHangForm from './layout/admin/ChiTietDonHangForm';
+import DonHangForm from './layout/admin/DonHangForm';
+import HinhThucGiaoHang_Admin from './layout/admin/HinhThucGiaoHangForm';
+import HinhThucThanhToan_Admin from './layout/admin/HinhThucThanhToanForm';
+import TheLoai_Admin from './layout/admin/TheLoaiForm';
 
 function App() {
 
@@ -34,8 +42,13 @@ function App() {
           <Route path='/kichHoat/:email/:maKichHoat' element={<KichHoatTaiKhoan />} />
           <Route path='/dangNhap' element={<DangNhap />} />
           <Route path='/test' element={<Test />} />
-          <Route path='/admin/themSach' element={<SachForm />} />
-
+          <Route path='/admin/themSach' element={<SachForm_Admin />} />
+          <Route path='/loi_403' element={<Error403 />} />
+          <Route path='/admin/themChiTietDonHang' element={<ChiTietDonHangForm />} />
+          <Route path='/admin/themDonHang' element={<DonHangForm />} />
+          <Route path='/admin/themHinhThucGiaoHang' element={<HinhThucGiaoHang_Admin />} />
+          <Route path='/admin/themHinhThucThanhToan' element={<HinhThucThanhToan_Admin />} />
+          <Route path='/admin/theLoai' element={<TheLoai_Admin />} />
 
         </Routes>
         {/* chan Trang */}
