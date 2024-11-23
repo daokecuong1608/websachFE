@@ -36,6 +36,7 @@ const DangNhap = () => {
                     const { jwt } = data;
                     //lưu trữ jwt vào local storage(bộ nhớ) or cookie
                     localStorage.setItem('token', jwt);
+                    localStorage.setItem('username', username);
                     //chuyển hướng sang trang chủ
                     window.location.href = '/';
                     setError('Đang nhập thành công ');
