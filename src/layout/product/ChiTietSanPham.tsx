@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import SachModel from "../../models/SachModel";
 import { laySachTheoMaSach } from "../../api/SachAPI";
-import { error } from "console";
 import HinhAnhSanPham from "./components/HinhAnhSanPham";
 import DanhGiaSanPham from "./components/DanhGiaSanPham";
 import renderRating from "../utlis/RenderRating";
 import DinhDangSo from "../utlis/DinhDangSo";
+import { addToCart } from "../../api/Cart";
+import useAuth from "../../utils/useAuth";
+import useAuthLogin from "../../utils/useAuth";
 
 
 
 
 const ChiTietSanPham: React.FC = () => {
+    useAuth();
 
     //lay ma sach tu URl
     const { maSach } = useParams();
@@ -32,6 +35,7 @@ const ChiTietSanPham: React.FC = () => {
     const [dangTaiDuLieu, setDangTaiDuLieu] = useState(true);
     const [baoLoi, setBaoLoi] = useState(null);
     const [soLuong, setSoLuong] = useState(1);
+    const navigate = useNavigate();
     const tangSoLuong = () => {
         const SoLuongHienTai = sach?.soLuong ? sach.soLuong : 0;
         if (soLuong < SoLuongHienTai) {
@@ -60,9 +64,27 @@ const ChiTietSanPham: React.FC = () => {
     }, [maSach]
     )
 
-    const handleThemVaoGioHang = () => {
+    const handleThemVaoGioHang = async () => {
+        const token = localStorage.getItem("token");
+        if (!token) {
+            alert("Vui lòng đăng nhập để thêm vào giỏ hàng.");
+            navigate("/login");
+        } else {
+            if (!sach) {
+                return;
+            }
+            try {
+                const message = await addToCart({ maSach: sach.maSach, soLuong: soLuong });
+                alert(message); // Hiển thị thông báo thành công
+                navigate("/")
+
+            } catch (error: any) {
+                alert(error.message || "Lỗi khi thêm vào giỏ hàng."); // Hiển thị lỗi
+            }
+        }
     }
     const handleMuaNgay = () => {
+
     }
 
 
@@ -141,7 +163,9 @@ const ChiTietSanPham: React.FC = () => {
                                     )
                                 }
                                 <div className="d-grid gap-2">
-                                    <button type="button" className="btn btn-outline-secondary mt-3" onClick={handleThemVaoGioHang}>Thêm vào giỏ hàng</button>
+                                    <button type="button"
+                                        className="btn btn-outline-secondary mt-3"
+                                        onClick={handleThemVaoGioHang}>Thêm vào giỏ hàng</button>
                                     <button type="button" className="btn btn-danger mt-3" onClick={handleMuaNgay}>Mua ngay</button>
                                 </div>
                             </div>

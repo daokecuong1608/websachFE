@@ -1,9 +1,10 @@
 import { FormEvent, useState } from "react";
 import RequireAdmin from "./RequireAdmin";
 import "./css/HinhThucThanhToan.css";
+import useAuth from "../../utils/useAuth";
 
 const HinhThucThanhToanForm = () => {
-
+    useAuth();
     const [HinhThucThanhToan, setHinhThucThanhToan] = useState({
         tenHinhThucThanhToan: '',
         moTa: '',

@@ -1,8 +1,10 @@
 import { FormEvent, useState } from "react";
 import RequireAdmin from "./RequireAdmin";
 import "./css/TheLoaiForm.css";
+import useAuth from "../../utils/useAuth";
 
 const TheLoaiForm: React.FC = (props) => {
+    useAuth();
     const [theLoai, setTheLoai] = useState({
         maTheLoai: '0',
         tenTheLoai: ''
@@ -25,6 +27,7 @@ const TheLoaiForm: React.FC = (props) => {
             console.log("aaa" + response);
             if (response.ok) {
                 alert('Thêm thể loại thành công');
+
                 setTheLoai({
                     maTheLoai: '0',
                     tenTheLoai: ''

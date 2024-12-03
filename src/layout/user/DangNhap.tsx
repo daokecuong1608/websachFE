@@ -1,14 +1,26 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import { GoogleLogin } from '@react-oauth/google';
+import axios from 'axios';
+import jwt_decode from 'jwt-decode';
+import request from '../../utils/request';
 import './css/DangNhap.css';
-const DangNhap = () => {
+import { jwtDecode } from 'jwt-decode';
 
+interface GoogleJwtPayload {
+    name: string;
+    email: string;
+    // Các thuộc tính khác nếu cần
+}
+
+
+const DangNhap = () => {
     const [username, setUserName] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
 
     const navigate = useNavigate();
+
 
     const handleLogin = () => {
         const loginRequest = {
@@ -47,7 +59,33 @@ const DangNhap = () => {
                 setError('Đăng nhập thất bại vui lòng kiểm tra lại tên đăng nhập và mật khẩu');
             }
             )
-    }
+    };
+
+
+
+
+    const handleGoogleLoginSuccess = async (response: any) => {
+        const decoded = jwtDecode<GoogleJwtPayload>(response.credential);
+        console.log(decoded);
+        try {
+            const res = await request.post('login/oauth2/code/google', {
+                token: response.credential
+            }, {
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            });
+            const { jwt } = res.data;
+            // Lưu trữ jwt vào local storage
+            localStorage.setItem('token', jwt);
+            localStorage.setItem('username', decoded.name);
+            // Chuyển hướng sang trang chủ
+            window.location.href = '/';
+        } catch (error) {
+            console.log('Đăng nhập bằng Google thất bại', error);
+            setError('Đăng nhập bằng Google thất bại');
+        }
+    };
 
     return (
         <div className="login-container">
@@ -95,14 +133,18 @@ const DangNhap = () => {
                         &#60;&#60;Go to Homepage
                     </span>
                 </div>
-
-
-
-                {/* 
-        <p className="mt-5 mb-3 text-muted">&copy; 2024-2025</p> */}
+                {/* <div className="google-login">
+                    <GoogleLogin
+                        onSuccess={handleGoogleLoginSuccess}
+                        onError={() => {
+                            console.log('Login Failed');
+                            setError('Đăng nhập bằng Google thất bại');
+                        }}
+                    />
+                </div> */}
             </form>
         </div>
     )
-
 }
+
 export default DangNhap;

@@ -1,8 +1,10 @@
 import React, { FormEvent, useState } from 'react';
 import RequireAdmin from './RequireAdmin';
+import useAuth from '../../utils/useAuth';
 
 
 const SachForm: React.FC = (props) => {
+    useAuth();
     const [sach, setSach] = useState({
         maSach: '0',
         tenSach: '',

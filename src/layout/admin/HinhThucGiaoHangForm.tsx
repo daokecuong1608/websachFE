@@ -1,8 +1,11 @@
 import { FormEvent, useState } from "react";
 import RequireAdmin from "./RequireAdmin";
 import "./css/HinhThucGiaoHang.css";
+import useAuth from "../../utils/useAuth";
 
 const HinhThucGiaoHangForm: React.FC = (props) => {
+
+    useAuth();
     const [hinhThucGiaoHang, setHinhThucGiaoHang] = useState({
         maHinhThucGiaoHang: '0',
         tenHinhThucGiaoHang: '',
