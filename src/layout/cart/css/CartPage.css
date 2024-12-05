@@ -1,0 +1,117 @@
+/* Tổng thể trang giỏ hàng */
+.cart-container {
+    padding    : 20px;
+    font-family: Arial, sans-serif;
+}
+
+.cart-title {
+    font-size    : 24px;
+    font-weight  : bold;
+    margin-bottom: 20px;
+}
+
+/* Bảng hiển thị giỏ hàng */
+.cart-table {
+    width          : 100%;
+    border-collapse: collapse;
+    margin-top     : 10px;
+}
+
+.cart-table th,
+.cart-table td {
+    border    : 1px solid #ddd;
+    text-align: center;
+    padding   : 8px;
+}
+
+.cart-table th {
+    background-color: #f4f4f4;
+    font-weight     : bold;
+}
+
+.cart-table td {
+    vertical-align: middle;
+}
+
+/* Cột số lượng với nút tăng/giảm */
+.cart-quantity {
+    display        : flex;
+    align-items    : center;
+    justify-content: center;
+    gap            : 10px;
+}
+
+.cart-quantity button {
+    background-color: #007bff;
+    color           : white;
+    border          : none;
+    padding         : 5px 10px;
+    cursor          : pointer;
+    font-size       : 14px;
+    border-radius   : 4px;
+    transition      : background-color 0.2s ease;
+}
+
+.cart-quantity button:hover {
+    background-color: #0056b3;
+}
+
+.cart-quantity span {
+    font-size  : 16px;
+    font-weight: bold;
+    min-width  : 20px;
+    text-align : center;
+}
+
+/* Hình ảnh sản phẩm */
+.cart-images {
+    display        : flex;
+    gap            : 10px;
+    justify-content: center;
+}
+
+.cart-images img {
+    width        : 50px;
+    height       : 50px;
+    object-fit   : cover;
+    border       : 1px solid #ddd;
+    border-radius: 4px;
+    transition   : transform 0.2s ease;
+}
+
+
+.cart-images img:hover {
+    transform: scale(1.1);
+}
+
+/* Tin nhắn giỏ hàng trống */
+.cart-empty-message {
+    font-size : 18px;
+    color     : #999;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Nút xóa */
+.cart-table td a {
+    display         : inline-block;
+    background-color: #dc3545;
+    color           : white;
+    padding         : 5px 10px;
+    text-decoration : none;
+    font-size       : 14px;
+    font-weight     : bold;
+    border-radius   : 4px;
+    transition      : background-color 0.3s ease, transform 0.2s ease;
+    cursor          : pointer;
+}
+
+.cart-table td a:hover {
+    background-color: #c82333;
+    transform       : scale(1.1);
+}
+
+/* Tổng thể nút */
+.cart-table td a:active {
+    transform: scale(1);
+}

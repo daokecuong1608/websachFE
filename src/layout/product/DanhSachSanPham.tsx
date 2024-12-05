@@ -18,7 +18,6 @@ const DanhSachSanPham = ({ tuKhoaTimKiem, maTheLoai }: DanhSachSanPhamProps) => 
     const [trangHienTai, setTrangHienTai] = useState(1);
     const [tongSoTrang, setTongSoTrang] = useState(0);
     const [tongSoSach, setTongSoSach] = useState(0);
-    //chỉ gọi 1 lần duy nhất khi component được render
     useEffect(() => {
 
         if (tuKhoaTimKiem === '' && maTheLoai == 0) {

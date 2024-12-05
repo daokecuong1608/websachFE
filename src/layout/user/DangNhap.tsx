@@ -45,10 +45,12 @@ const DangNhap = () => {
                 }
             ).then(
                 (data) => {
-                    const { jwt } = data;
+                    const { jwt, id } = data;
                     //lưu trữ jwt vào local storage(bộ nhớ) or cookie
                     localStorage.setItem('token', jwt);
                     localStorage.setItem('username', username);
+                    localStorage.setItem('userId', id); // Save the user ID
+                    console.log('id', id);
                     //chuyển hướng sang trang chủ
                     window.location.href = '/';
                     setError('Đang nhập thành công ');

@@ -1,5 +1,4 @@
 import axio from "./axiosConfig";
-
 export interface AddToCartRequest {
     maSach: number;
     soLuong: number;
@@ -25,3 +24,21 @@ export const addToCart = async (request: AddToCartRequest): Promise<string> => {
         throw new Error("Lỗi kết nối. Vui lòng thử lại.");
     }
 }
+
+export const getCart = async (maNguoiDung: number): Promise<any> => {
+    try {
+        const response = await axio.get(`api/cart`, {
+            params: { maNguoiDung } // Sử dụng query parameter
+        });
+        console.log("Dữ liệu giỏ hàng:", response.data);
+        return response.data;
+    } catch (error) {
+        console.error("Lỗi khi lấy giỏ hàng:", error);
+        return null;
+    }
+};
+
+
+
+
+

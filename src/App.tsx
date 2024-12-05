@@ -16,6 +16,7 @@ import Error403 from './layout/error/Error_403';
 import HinhThucGiaoHang_Admin from './layout/admin/HinhThucGiaoHangForm';
 import HinhThucThanhToan_Admin from './layout/admin/HinhThucThanhToanForm';
 import TheLoai_Admin from './layout/admin/TheLoaiForm';
+import CartPage from './layout/cart/CartPage';
 
 function App() {
 
@@ -30,7 +31,7 @@ function App() {
           setTuKhoaTimKiem={setTuKhoaTimKiem}
         />
         <Routes>
-
+          <Route path="/gio-hang" element={<CartPage />} />
           <Route path='/' element={<HomePage tuKhoaTimKiem={tuKhoaTimKiem} />} />
           <Route path='/:maTheLoai' element={<HomePage tuKhoaTimKiem={tuKhoaTimKiem} />} />
           <Route path='/about' element={<About />} />

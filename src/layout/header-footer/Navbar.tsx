@@ -1,6 +1,15 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import { Search } from "react-bootstrap-icons";
 import { Link, NavLink, useNavigate } from "react-router-dom";
+import { getCart } from "../../api/Cart";
+
+
+// Define the type for the items in the cart
+interface GioHangItem {
+    tenSach: string;
+    soLuong: number;
+    giaBan: number;
+}
 
 interface NavbarProps {
     tuKhoaTimKiem: string
@@ -13,6 +22,7 @@ function Navbar({ tuKhoaTimKiem, setTuKhoaTimKiem }: NavbarProps) {
     const [tuKhoaTamThoi, setTuKhoaTamthoi] = useState('');
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [userName, setUserName] = useState('');
+    const [gioHang, setGioHang] = useState<GioHangItem[]>([]);
 
 
     useEffect(() => {
@@ -23,6 +33,11 @@ function Navbar({ tuKhoaTimKiem, setTuKhoaTimKiem }: NavbarProps) {
             setUserName(user);
         }
     }, [])
+
+
+    const handleGioHangClick = () => {
+        navigate("/gio-hang");
+    };
 
     const handleLogout = () => {
         localStorage.removeItem('token');
@@ -145,7 +160,7 @@ function Navbar({ tuKhoaTimKiem, setTuKhoaTimKiem }: NavbarProps) {
                 {/* //Biểu tượng giỏ hang */}
                 <ul className="navbar-nav me-1">
                     <li className="nav-item">
-                        <a className="nav-link" href="#">
+                        <a className="nav-link" href="#" onClick={handleGioHangClick}>
                             <i className="fas fa-shopping-cart"></i>
                         </a>
                     </li>
