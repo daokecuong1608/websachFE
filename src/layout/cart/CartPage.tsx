@@ -45,6 +45,14 @@ const CartPage = () => {
                 soLuong: soLuong // Số lượng mới
             });
             console.log("Phản hồi từ server:", response.data);
+
+            const maNguoiDung = parseInt(localStorage.getItem('userId') || '0');
+            const updatedCart = await getCart(maNguoiDung);
+
+            setGioHang(updatedCart);
+            console.log("Cập nhật giỏ hàng sau khi:", updatedCart);
+
+
         } catch (error) {
             console.error("Lỗi khi cập nhật sản phẩm trong giỏ hàng", error);
         }
@@ -69,13 +77,9 @@ const CartPage = () => {
             const maNguoiDung = parseInt(localStorage.getItem('userId') || '0');
             const updatedCart = await getCart(maNguoiDung);
 
-            // Cập nhật state với dữ liệu mới
             setGioHang(updatedCart);
             console.log("Cập nhật giỏ hàng sau khi xóa:", updatedCart);
-            // // Xóa sản phẩm khỏi state sau khi thành công
-            // const updatedCart = [...gioHang];
-            // updatedCart.splice(index, 1);
-            // setGioHang(updatedCart);
+
         } catch (error) {
             console.error("Lỗi khi xóa sản phẩm trong giỏ hàng", error);
         }
