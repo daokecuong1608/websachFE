@@ -51,8 +51,6 @@ const CartPage = () => {
 
             setGioHang(updatedCart);
             console.log("Cập nhật giỏ hàng sau khi:", updatedCart);
-
-
         } catch (error) {
             console.error("Lỗi khi cập nhật sản phẩm trong giỏ hàng", error);
         }
@@ -86,8 +84,6 @@ const CartPage = () => {
     };
 
 
-
-
     const handleIncrease = (index: number) => {
         const updateCart = [...gioHang];
         updateCart[index].soLuong++;
@@ -109,7 +105,9 @@ const CartPage = () => {
         updateCartItemOnServer(index, updateCart[index].soLuong);
     };
 
+    const handleOrder = () => {
 
+    }
 
     return (
         <div className="cart-container">
@@ -158,10 +156,15 @@ const CartPage = () => {
                             </tr>
                         ))}
                     </tbody>
+
                 </table>
+
             ) : (
                 <p className="cart-empty-message">Giỏ hàng của bạn trống</p>
             )}
+            <div className="cart-actions">
+                <button className="order-button" onClick={handleOrder}>Đặt hàng</button>
+            </div>
         </div>
     );
 };
