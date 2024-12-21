@@ -1,0 +1,71 @@
+.order-details {
+    padding: 20px;
+}
+
+.order-title,
+.cart-title,
+.shipping-title,
+.payment-title,
+.address-title {
+    font-size    : 24px;
+    margin-bottom: 10px;
+}
+
+.cart-table {
+    width          : 100%;
+    border-collapse: collapse;
+}
+
+.cart-table th,
+.cart-table td {
+    padding: 10px;
+    border : 1px solid #ddd;
+}
+
+.total-price {
+    font-size : 20px;
+    margin-top: 20px;
+}
+
+.shipping-section,
+.payment-section,
+.shipping-address-section {
+    margin-top: 30px;
+}
+
+.shipping-methods,
+.payment-methods {
+    display       : flex;
+    flex-direction: column;
+}
+
+.shipping-method-label,
+.payment-method-label {
+    margin-bottom: 10px;
+}
+
+.selected-shipping,
+.selected-payment {
+    font-weight: bold;
+    margin-top : 10px;
+}
+
+.address-input {
+    width     : 100%;
+    padding   : 8px;
+    margin-top: 10px;
+    font-size : 16px;
+}
+
+.order-submit-button {
+    padding         : 10px 20px;
+    background-color: #4CAF50;
+    color           : white;
+    border          : none;
+    font-size       : 16px;
+    cursor          : pointer;
+}
+
+.order-submit-button:hover {
+    background-color: #45a049;
+}

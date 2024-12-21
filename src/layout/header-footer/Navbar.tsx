@@ -90,17 +90,17 @@ function Navbar({ tuKhoaTimKiem, setTuKhoaTimKiem }: NavbarProps) {
                                 aria-labelledby="navbarDropdown_1">
                                 <li>
                                     <NavLink className="dropdown-item" to="/1">
-                                        Thể loại 1
+                                        Sách về khoa học
                                     </NavLink>
                                 </li>
                                 <li>
                                     <NavLink className="dropdown-item" to="/2">
-                                        Thể loại 2
+                                        Sách về tiểu  thuyết
                                     </NavLink>
                                 </li>
                                 <li>
                                     <NavLink className="dropdown-item" to="/3">
-                                        Thể loại 3
+                                        Sách về tâm lý học
                                     </NavLink>
                                 </li>
                             </ul>

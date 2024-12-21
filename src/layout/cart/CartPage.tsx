@@ -106,7 +106,7 @@ const CartPage = () => {
     };
 
     const handleOrder = () => {
-
+        navigate("/order-details", { state: { gioHang } });
     }
 
     return (
