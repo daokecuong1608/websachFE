@@ -18,6 +18,7 @@ import HinhThucThanhToan_Admin from './layout/admin/HinhThucThanhToanForm';
 import TheLoai_Admin from './layout/admin/TheLoaiForm';
 import CartPage from './layout/cart/CartPage';
 import OrderDetailsPage from './layout/order/OrderDetailsPage';
+import OrderConfirmationPage from './layout/order/OrderConfirmationPage ';
 
 function App() {
 
@@ -47,6 +48,7 @@ function App() {
           <Route path='/admin/themHinhThucThanhToan' element={<HinhThucThanhToan_Admin />} />
           <Route path='/admin/theLoai' element={<TheLoai_Admin />} />
           <Route path='/order-details' element={<OrderDetailsPage />} />
+          <Route path="/order-confirmation/:id" element={<OrderConfirmationPage />} />
 
         </Routes>
         {/* chan Trang */}

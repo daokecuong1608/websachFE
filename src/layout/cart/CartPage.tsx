@@ -12,7 +12,6 @@ const CartPage = () => {
 
 
     useEffect(() => {
-
         fetchCart();
     }, [navigate]);
 
@@ -31,17 +30,19 @@ const CartPage = () => {
         }
     };
 
+    // console.log("gioHang", gioHang);
+
     const updateCartItemOnServer = async (index: number, soLuong: number) => {
         const item = gioHang[index];
         console.log("item", item);
         console.log("Dữ liệu gửi đi:", {
-            chiTietDonHangId: item.chiTietDonHang,
+            maGioHang: item.maGioHang,
             soLuong: soLuong
         });
         try {
             // Gửi yêu cầu PUT đến API để cập nhật giỏ hàng
             const response = await request.put("api/cart", {
-                chiTietDonHangId: item.chiTietDonHang, // Mã chi tiết đơn hàng
+                maGioHang: item.maGioHang, // Mã chi tiết đơn hàng
                 soLuong: soLuong // Số lượng mới
             });
             console.log("Phản hồi từ server:", response.data);
@@ -69,7 +70,7 @@ const CartPage = () => {
         try {
             // Gửi yêu cầu DELETE đến API
             const response = await request.delete("api/cart", {
-                params: { id: item.chiTietDonHang }, // Gửi `id` như tham số
+                params: { id: item.maGioHang }, // Gửi `id` như tham số
             });
             // Gọi lại API để lấy dữ liệu mới nhất
             const maNguoiDung = parseInt(localStorage.getItem('userId') || '0');

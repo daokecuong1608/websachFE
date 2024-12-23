@@ -76,6 +76,7 @@ const ChiTietSanPham: React.FC = () => {
             try {
                 const message = await addToCart({ maSach: sach.maSach, soLuong: soLuong });
                 alert(message); // Hiển thị thông báo thành công
+                console.log("message", message);
                 navigate("/")
 
             } catch (error: any) {
