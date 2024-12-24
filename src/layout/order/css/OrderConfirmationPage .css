@@ -1,0 +1,119 @@
+.order-confirmation {
+    max-width       : 800px;
+    margin          : 0 auto;
+    padding         : 20px;
+    background-color: #f9f9f9;
+    border          : 1px solid #ddd;
+    border-radius   : 8px;
+    font-family     : Arial, sans-serif;
+}
+
+.order-confirmation__title {
+    font-size    : 24px;
+    font-weight  : bold;
+    color        : #333;
+    text-align   : center;
+    margin-bottom: 20px;
+}
+
+.order-confirmation__info,
+.order-confirmation__status {
+    font-size    : 16px;
+    margin-bottom: 10px;
+}
+
+.order-confirmation__subtitle {
+    font-size: 20px;
+    margin   : 20px 0 10px;
+    color    : #444;
+}
+
+.order-confirmation__table {
+    width          : 100%;
+    border-collapse: collapse;
+    margin-bottom  : 20px;
+}
+
+.order-confirmation__table-header {
+
+    background-color: #f1f1f1;
+    font-weight     : bold;
+    text-align      : center;
+    padding         : 10px;
+
+}
+
+.order-confirmation__table-cell {
+    padding       : 10px;
+    border        : 1px solid #ddd;
+    text-align    : center;
+    vertical-align: middle;
+}
+
+.order-confirmation__table-row:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.order-confirmation__image {
+    width        : 50px;
+    height       : 50px;
+    object-fit   : cover;
+    border-radius: 4px;
+}
+
+.order-confirmation__summary,
+.order-confirmation__total {
+    font-size    : 16px;
+    margin-bottom: 10px;
+}
+
+.order-confirmation__total strong {
+    color    : #d9534f;
+    font-size: 18px;
+}
+
+.order-confirmation__button {
+    display         : block;
+    width           : 100%;
+    padding         : 10px 20px;
+    background-color: #007bff;
+    color           : white;
+    border          : none;
+    border-radius   : 4px;
+    font-size       : 16px;
+    font-weight     : bold;
+    cursor          : pointer;
+    text-align      : center;
+}
+
+.order-confirmation__button:hover {
+    background-color: #0056b3;
+}
+
+/* Thêm khung cho bảng */
+.order-details-table {
+    width          : 100%;
+    border-collapse: collapse;
+    margin-top     : 20px;
+    border         : 1px solid #ddd;
+}
+
+.order-details-table th,
+.order-details-table td {
+    border    : 1px solid #ddd;
+    padding   : 8px;
+    text-align: center;
+}
+
+.order-details-table th {
+    background-color: #f4f4f4;
+    font-weight     : bold;
+}
+
+/* Thu nhỏ kích thước hình ảnh */
+.order-details-table__image {
+    width        : 60px;
+    height       : 60px;
+    object-fit   : cover;
+    border-radius: 4px;
+}

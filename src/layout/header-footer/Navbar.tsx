@@ -120,6 +120,7 @@ function Navbar({ tuKhoaTimKiem, setTuKhoaTimKiem }: NavbarProps) {
                                         Quy định 1
                                     </a>
                                 </li>
+
                                 <li>
                                     <a className="dropdown-item" href="#">
                                         Quy định  2
@@ -178,7 +179,8 @@ function Navbar({ tuKhoaTimKiem, setTuKhoaTimKiem }: NavbarProps) {
                                     </a>
                                     <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                                         <li><Link className="dropdown-item" to="/thongTinTaiKhoan">Thông tin tài khoản</Link></li>
-                                        <li><Link className="dropdown-item" to="/caiDat">Cài đặt</Link></li>
+                                        <li><Link className="dropdown-item" to="/loi_403">Cài đặt</Link></li>
+                                        <li><Link className="dropdown-item" to="/order-list">Đơn hàng đã mua </Link></li>
                                         <li><hr className="dropdown-divider" /></li>
                                         <li><button className="dropdown-item" onClick={handleLogout}>Đăng xuất</button></li>
                                     </ul>

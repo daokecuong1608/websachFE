@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import request from "../../utils/request";
-
+import "./css/OrderConfirmationPage .css"; // Make sure to import your CSS
 interface SanPham {
     maSanPham: number;
-    tenSanPham: string;
+    tenSach: string;
     soLuong: number;
     giaBan: number;
     hinhAnh: string; // Thêm trường hình ảnh vào mỗi sản phẩm
@@ -43,6 +43,7 @@ const OrderConfirmationPage = (): JSX.Element => {
             const response = await request.get(`/api/don-hang/${orderId}`); // Gọi API để lấy chi tiết đơn hàng
             setOrderDetails(response.data); // Lưu dữ liệu đơn hàng vào state
             setLoading(false); // Đổi trạng thái loading thành false
+            console.log("Order details:", response.data);
         } catch (error) {
             console.error("Error fetching order details:", error);
             setLoading(false); // Đổi trạng thái loading nếu có lỗi
@@ -71,54 +72,72 @@ const OrderConfirmationPage = (): JSX.Element => {
 
     return (
         <div className="order-confirmation">
-            <h2>Đơn hàng của bạn đã được đặt thành công!</h2>
-            {/* Hiển thị các thông tin cơ bản của đơn hàng */}
-            <p>Mã đơn hàng: <strong>{orderDetails.maDonHang}</strong></p>
-            <p>Ngày đặt hàng: <strong>{new Date(orderDetails.ngayTao).toLocaleDateString()}</strong></p>
-            <p>Ngày nhận hàng dự kiến: <strong>{deliveryDate}</strong></p>
-            <p>Địa chỉ nhận hàng: <strong>{orderDetails.diaChiNhanHang}</strong></p>
-            <p>Trạng thái đơn hàng: <strong>{orderDetails.trangThai}</strong></p>
+            <h2 className="order-confirmation__title">Đơn hàng của bạn đã được đặt thành công!</h2>
+            <p className="order-confirmation__info">
+                Mã đơn hàng: <strong className="order-confirmation__info--value">{orderDetails.maDonHang}</strong>
+            </p>
+            <p className="order-confirmation__info">
+                Ngày đặt hàng: <strong className="order-confirmation__info--value">{new Date(orderDetails.ngayTao).toLocaleDateString()}</strong>
+            </p>
+            <p className="order-confirmation__info">
+                Ngày nhận hàng dự kiến: <strong className="order-confirmation__info--value">{deliveryDate}</strong>
+            </p>
+            <p className="order-confirmation__info">
+                Địa chỉ nhận hàng: <strong className="order-confirmation__info--value">{orderDetails.diaChiNhanHang}</strong>
+            </p>
+            <p className="order-confirmation__status">
+                Trạng thái đơn hàng: <strong className="order-confirmation__status--value">{orderDetails.trangThai}</strong>
+            </p>
 
-            <h3>Chi tiết sản phẩm:</h3>
+            <h3 className="order-confirmation__subtitle">Chi tiết sản phẩm:</h3>
             <table className="order-details-table">
                 <thead>
                     <tr>
-                        <th>Hình ảnh</th> {/* Cột hình ảnh */}
-                        <th>Tên sản phẩm</th>
-                        <th>Số lượng</th>
-                        <th>Đơn giá</th>
-                        <th>Thành tiền</th>
+                        <th className="order-details-table__header">Hình ảnh</th>
+                        <th className="order-details-table__header">Tên sản phẩm</th>
+                        <th className="order-details-table__header">Số lượng</th>
+                        <th className="order-details-table__header">Đơn giá</th>
+                        <th className="order-details-table__header">Thành tiền</th>
                     </tr>
                 </thead>
                 <tbody>
                     {orderDetails.sanPham.map((item, index) => (
-                        <tr key={index}>
-                            {/* Thêm hình ảnh sản phẩm */}
-                            <td>
+                        <tr key={index} className="order-details-table__row">
+                            <td className="order-details-table__cell">
                                 <img
                                     src={item.hinhAnh}
-                                    alt={item.tenSanPham}
-                                    style={{ width: "50px", height: "50px", objectFit: "cover" }}
+                                    alt={item.tenSach}
+                                    className="order-details-table__image"
                                 />
                             </td>
-                            <td>{item.tenSanPham}</td>
-                            <td>{item.soLuong}</td>
-                            <td>{item.giaBan.toLocaleString()} VND</td>
-                            <td>{(item.giaBan * item.soLuong).toLocaleString()} VND</td>
+                            <td className="order-details-table__cell">{item.tenSach}</td>
+                            <td className="order-details-table__cell">{item.soLuong}</td>
+                            <td className="order-details-table__cell">{item.giaBan.toLocaleString()} VND</td>
+                            <td className="order-details-table__cell">{(item.giaBan * item.soLuong).toLocaleString()} VND</td>
                         </tr>
                     ))}
                 </tbody>
             </table>
 
-            <h3>Tổng cộng:</h3>
-            <p>Tổng tiền sản phẩm: <strong>{orderDetails.tongTienSanPham.toLocaleString()} VND</strong></p>
-            <p>Chi phí giao hàng: <strong>{orderDetails.chiPhiGiaoHang.toLocaleString()} VND</strong></p>
-            <p>Chi phí thanh toán: <strong>{orderDetails.chiPhiThanhToan.toLocaleString()} VND</strong></p>
-            <p>Tổng thanh toán: <strong>{orderDetails.tongTien.toLocaleString()} VND</strong></p>
+            <h3 className="order-confirmation__subtitle">Tổng cộng:</h3>
+            <p className="order-confirmation__summary">
+                Tổng tiền sản phẩm: <strong className="order-confirmation__summary--value">{orderDetails.tongTienSanPham.toLocaleString()} VND</strong>
+            </p>
+            <p className="order-confirmation__summary">
+                Chi phí giao hàng: <strong className="order-confirmation__summary--value">{orderDetails.chiPhiGiaoHang.toLocaleString()} VND</strong>
+            </p>
+            <p className="order-confirmation__summary">
+                Chi phí thanh toán: <strong className="order-confirmation__summary--value">{orderDetails.chiPhiThanhToan.toLocaleString()} VND</strong>
+            </p>
+            <p className="order-confirmation__total">
+                Tổng thanh toán: <strong className="order-confirmation__total--value">{orderDetails.tongTien.toLocaleString()} VND</strong>
+            </p>
 
-            {/* Nút quay về trang chủ */}
-            <button onClick={() => navigate("/")}>Quay về trang chủ</button>
+            <button className="order-confirmation__button" onClick={() => navigate("/")}>
+                Quay về trang chủ
+            </button>
         </div>
+
     );
 };
 

@@ -19,6 +19,8 @@ import TheLoai_Admin from './layout/admin/TheLoaiForm';
 import CartPage from './layout/cart/CartPage';
 import OrderDetailsPage from './layout/order/OrderDetailsPage';
 import OrderConfirmationPage from './layout/order/OrderConfirmationPage ';
+import OrderListPage from './layout/order/OrderListPage';
+import OrderDetailPage from './layout/order/OrderDetailPage';
 
 function App() {
 
@@ -49,6 +51,8 @@ function App() {
           <Route path='/admin/theLoai' element={<TheLoai_Admin />} />
           <Route path='/order-details' element={<OrderDetailsPage />} />
           <Route path="/order-confirmation/:id" element={<OrderConfirmationPage />} />
+          <Route path="/order-list" element={<OrderListPage />} />
+          <Route path="/order-detail-page/:maDonhang" element={<OrderDetailPage />} />
 
         </Routes>
         {/* chan Trang */}
