@@ -2,11 +2,14 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { GoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
-import jwt_decode from 'jwt-decode';
 import request from '../../utils/request';
 import './css/DangNhap.css';
 import { jwtDecode } from 'jwt-decode';
-
+interface JwtPayload {
+    isAdmin: boolean;
+    isStaff: boolean;
+    isUser: boolean;
+}
 interface GoogleJwtPayload {
     name: string;
     email: string;
@@ -51,6 +54,18 @@ const DangNhap = () => {
                     localStorage.setItem('username', username);
                     localStorage.setItem('userId', id); // Save the user ID
                     console.log('id', id);
+
+
+                    const decodedToken = jwtDecode(jwt) as JwtPayload;
+                    console.log(decodedToken);
+
+                    const isAdmin = decodedToken.isAdmin;
+                    if (isAdmin) {
+                        navigate("/admin/dash-board")
+                        return;
+                    }
+
+
                     //chuyển hướng sang trang chủ
                     window.location.href = '/';
                     setError('Đang nhập thành công ');

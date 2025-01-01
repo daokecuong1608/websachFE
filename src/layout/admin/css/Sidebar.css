@@ -1,0 +1,130 @@
+/* Sidebar.css */
+.layout-container {
+    display: flex;
+    /* Chia bố cục thành hai phần ngang */
+    height : 100vh;
+    /* Đảm bảo chiều cao toàn màn hình */
+}
+
+.sidebar {
+    width           : 250px;
+    /* Đặt chiều rộng cho sidebar */
+    background-color: #f4f4f4;
+    /* Màu nền cho sidebar */
+    padding         : 20px;
+    box-shadow      : 2px 0 5px rgba(0, 0, 0, 0.1);
+    overflow-y      : auto;
+}
+
+.main-content {
+    flex-grow       : 1;
+    /* Chiếm toàn bộ không gian còn lại */
+    padding         : 20px;
+    overflow-y      : auto;
+    /* Cuộn nếu nội dung vượt quá chiều cao */
+    background-color: #fff;
+    /* Màu nền cho nội dung */
+}
+
+.sidebar ul {
+    list-style: none;
+    padding   : 0;
+    margin    : 0;
+}
+
+.sidebar ul li {
+    position     : relative;
+    margin-bottom: 15px;
+}
+
+.sidebar ul li button {
+    width     : 100%;
+    text-align: center;
+    background: none;
+    border    : none;
+    color     : #333;
+    font-size : 16px;
+    padding   : 10px;
+    cursor    : pointer;
+}
+
+.sidebar ul li button:hover {
+    background-color: #ddd;
+}
+
+.submenu {
+    display         : none;
+    /* Ẩn submenu */
+    position        : absolute;
+    top             : 100%;
+    left            : 0;
+    background-color: #f9f9f9;
+    padding         : 10px 0;
+    border          : 1px solid #ddd;
+    box-shadow      : 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index         : 1000;
+    width           : 200px;
+}
+
+.menu-item:hover .submenu {
+    display: block;
+}
+
+.submenu li {
+    padding: 5px 15px;
+}
+
+.submenu li a {
+    text-decoration: none;
+    color          : #333;
+    font-size      : 14px;
+    display        : block;
+}
+
+.submenu li a:hover {
+    color           : #007bff;
+    background-color: #f1f1f1;
+}
+
+.logout-btn {
+    background-color: #ff4d4d;
+    /* Màu nền đỏ nổi bật */
+    color           : #fff;
+    /* Màu chữ trắng */
+    border          : none;
+    /* Xóa viền nút */
+    border-radius   : 5px;
+    /* Bo tròn các góc */
+    font-size       : 16px;
+    /* Kích thước chữ */
+    font-weight     : bold;
+    /* Chữ đậm */
+    padding         : 10px 20px;
+    /* Khoảng cách bên trong nút */
+    cursor          : pointer;
+    /* Hiệu ứng con trỏ */
+    transition      : background-color 0.3s ease, transform 0.2s ease;
+    /* Hiệu ứng mượt khi hover */
+    margin-top      : 20px;
+    /* Khoảng cách phía trên */
+    display         : block;
+    /* Căn nút ra giữa */
+    width           : 100%;
+    /* Chiều rộng 100% theo phần tử cha */
+    text-align      : center;
+    /* Căn giữa chữ */
+}
+
+.logout-btn:hover {
+    background-color: #e60000;
+    /* Màu nền khi hover */
+    transform       : scale(1.05);
+    /* Phóng to nhẹ */
+}
+
+.logout-btn:active {
+    background-color: #cc0000;
+    /* Màu nền khi click */
+    transform       : scale(0.95);
+    /* Thu nhỏ nhẹ khi nhấn */
+}

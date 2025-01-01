@@ -21,6 +21,17 @@ import OrderDetailsPage from './layout/order/OrderDetailsPage';
 import OrderConfirmationPage from './layout/order/OrderConfirmationPage ';
 import OrderListPage from './layout/order/OrderListPage';
 import OrderDetailPage from './layout/order/OrderDetailPage';
+import ThongTinTaiKhoan from './layout/user/ThongTinTaiKhoan';
+import Dashboard from './layout/admin/Dashboard';
+import Error_401 from './layout/error/Error_401';
+import Layout from './layout/admin/Layout';
+import Categories from './layout/admin/Categories';
+import DeliveryMethods from './layout/admin/DeliveryMethods';
+import PaymentMethods from './layout/admin/PaymentMethods';
+import Products from './layout/admin/Products';
+import UpdateCategory from './layout/admin/UpdateCategory';
+import UpdateDeliveryMethod from './layout/admin/UpdateDeliveryMethods';
+import UpdatePaymentMethods from './layout/admin/UpdatePaymentMethods';
 
 function App() {
 
@@ -46,6 +57,7 @@ function App() {
           <Route path='/test' element={<Test />} />
           <Route path='/admin/themSach' element={<SachForm_Admin />} />
           <Route path='/loi_403' element={<Error403 />} />
+          <Route path='/401' element={<Error_401 />} />
           <Route path='/admin/themHinhThucGiaoHang' element={<HinhThucGiaoHang_Admin />} />
           <Route path='/admin/themHinhThucThanhToan' element={<HinhThucThanhToan_Admin />} />
           <Route path='/admin/theLoai' element={<TheLoai_Admin />} />
@@ -53,6 +65,15 @@ function App() {
           <Route path="/order-confirmation/:id" element={<OrderConfirmationPage />} />
           <Route path="/order-list" element={<OrderListPage />} />
           <Route path="/order-detail-page/:maDonhang" element={<OrderDetailPage />} />
+          <Route path="/thongTinTaiKhoan" element={<ThongTinTaiKhoan />} />
+          <Route path="/admin/dash-board" element={<Layout><Dashboard /></Layout>} />
+          <Route path="/admin/categories" element={<Layout><Categories /></Layout>} />
+          <Route path="/admin/delivery" element={<Layout><DeliveryMethods /></Layout>} />
+          <Route path="/admin/payment" element={<Layout><PaymentMethods /></Layout>} />
+          <Route path="/admin/products" element={<Layout><Products /></Layout>} />
+          <Route path="/admin/update-category/:maTheLoai" element={<Layout><UpdateCategory /></Layout>} />
+          <Route path="/admin/update-delivery/:maHinhThucGiaoHang" element={<Layout><UpdateDeliveryMethod /></Layout>} />
+          <Route path="/admin/update-payment/:maHinhThucThanhToan" element={<Layout><UpdatePaymentMethods /></Layout>} />
 
         </Routes>
         {/* chan Trang */}

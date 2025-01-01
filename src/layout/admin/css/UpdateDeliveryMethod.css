@@ -1,0 +1,54 @@
+.update-delivery-method-container {
+    padding  : 20px;
+    max-width: 600px;
+    margin   : auto;
+}
+
+h1 {
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display      : block;
+    font-weight  : bold;
+    margin-bottom: 5px;
+}
+
+input {
+    width        : 100%;
+    padding      : 8px;
+    margin       : 5px 0;
+    border-radius: 4px;
+    border       : 1px solid #ccc;
+}
+
+.form-buttons {
+    display        : flex;
+    justify-content: space-between;
+}
+
+button {
+    padding         : 10px 20px;
+    border          : none;
+    background-color: #b8490d;
+    color           : white;
+    cursor          : pointer;
+    border-radius   : 4px;
+}
+
+button.cancel-btn {
+    background-color: #f44336;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.error {
+    color     : red;
+    text-align: center;
+}

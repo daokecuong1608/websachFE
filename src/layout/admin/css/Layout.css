@@ -1,0 +1,35 @@
+/* Toàn bộ container của layout */
+.layout-container {
+    display : flex;
+    /* Sử dụng flexbox để chia 2 cột */
+    height  : 100vh;
+    /* Chiều cao toàn màn hình */
+    overflow: hidden;
+    /* Đảm bảo không có nội dung thừa */
+}
+
+/* Sidebar */
+.sidebar {
+    width           : 250px;
+    /* Độ rộng cố định của sidebar */
+    background-color: #2c3e50;
+    /* Màu nền */
+    color           : white;
+    /* Màu chữ */
+    overflow-y      : auto;
+    /* Cho phép cuộn nếu nội dung dài */
+}
+
+/* Nội dung chính */
+.main-content {
+    flex            : 1;
+    /* Chiếm toàn bộ phần còn lại của chiều ngang */
+    background-color: #ecf0f1;
+    /* Màu nền nhạt */
+    padding         : 20px;
+    /* Khoảng cách nội dung */
+    overflow-y      : auto;
+    /* Cho phép cuộn dọc */
+    box-sizing      : border-box;
+    /* Tính cả padding vào kích thước */
+}

@@ -1,0 +1,47 @@
+.form-container {
+    display              : grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* Hai cột */
+    gap                  : 16px;
+    /* Khoảng cách giữa các ô */
+}
+
+.form-group {
+    display    : flex;
+    align-items: center;
+    /* Căn giữa theo chiều dọc */
+    gap        : 10px;
+    /* Khoảng cách giữa label và input */
+}
+
+.form-label {
+    flex      : 0 0 150px;
+    /* Chiều rộng cố định cho label */
+    text-align: left;
+    /* Căn phải label */
+    margin    : 0;
+}
+
+.form-actions {
+    display        : flex;
+    /* Sử dụng Flexbox */
+    justify-content: space-between;
+    /* Chia đều hai nút trong chiều rộng */
+    /* Đẩy các nút về phía cuối (phải) */
+    gap            : 20px;
+    /* Khoảng cách giữa các nút */
+    margin-top     : 20px;
+    /* Tạo khoảng cách phía trên */
+}
+
+/* Tùy chọn: Tùy chỉnh nút */
+.form-actions .btn {
+    flex      : 1;
+    /* Chia đều chiều rộng */
+    text-align: center;
+    /* Căn giữa nội dung nút */
+    padding   : 10px;
+    /* Tăng vùng nhấp chuột */
+
+
+}
