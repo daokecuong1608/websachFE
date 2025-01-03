@@ -2,6 +2,7 @@ import { jwtDecode } from "jwt-decode";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import './css/Dashboard.css';
+import RequireAdmin from "./RequireAdmin";
 interface JwtPayload {
     isAdmin: boolean;
     isStaff: boolean;
@@ -67,9 +68,16 @@ const Dashboard: React.FC = () => {
                     </button>
                 </section>
 
+                <section className="dashboard-section">
+                    <h2>Quản lý đơn hàng</h2>
+                    <button className="manage-button" onClick={() => navigate('/admin/orders')}>
+                        Xem và Quản lý
+                    </button>
+                </section>
             </main>
         </div>
 
     )
 }
-export default Dashboard;
+const Dashboard_Admin = RequireAdmin(Dashboard);
+export default Dashboard_Admin;

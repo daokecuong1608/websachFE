@@ -1,0 +1,125 @@
+/* Tổng thể container */
+.order-admin-container {
+    padding         : 20px;
+    background-color: #f5f5f5;
+    border-radius   : 8px;
+    box-shadow      : 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family     : Arial, sans-serif;
+}
+
+/* Tiêu đề */
+.order-admin-title {
+    font-size    : 24px;
+    font-weight  : bold;
+    margin-bottom: 20px;
+    text-align   : center;
+    color        : #333;
+}
+
+/* Bảng */
+.order-admin-table {
+    width           : 100%;
+    border-collapse : collapse;
+    background-color: #fff;
+    border-radius   : 8px;
+    overflow        : hidden;
+    margin-bottom   : 20px;
+}
+
+/* Header của bảng */
+.order-admin-table-header th {
+    background-color   : #89b6e5;
+    color              : rgb(22, 0, 0);
+    padding            : 10px;
+    text-align         : center;
+    font-size          : 14px;
+    font-weight        : bold;
+    /* text-transform  : uppercase; */
+}
+
+/* Hàng của bảng */
+.order-admin-table-row {
+    transition: background-color 0.3s;
+}
+
+.order-admin-table-row:nth-child(even) {
+    background-color: #faf5f5;
+}
+
+.order-admin-table-row:hover {
+    background-color: #e9ecef;
+}
+
+/* Ô của bảng */
+.order-admin-table-row td {
+    padding      : 10px;
+    border-bottom: 1px solid #ddd;
+    font-size    : 14px;
+    color        : #555;
+}
+
+/* Nút trạng thái */
+.order-admin-status {
+    padding         : 5px 10px;
+    border          : none;
+    border-radius   : 4px;
+    font-size       : 12px;
+    font-weight     : bold;
+    color           : #fff;
+    background-color: #28a745;
+    cursor          : default;
+    text-transform  : uppercase;
+}
+
+/* Nút trạng thái màu theo trạng thái */
+.order-admin-status:contains("DA_GIAO") {
+    background-color: #c529c0;
+    /* Xanh lục */
+}
+
+.order-admin-status:contains("DANG_XU_LY") {
+    background-color: #ffc107;
+    /* Vàng */
+}
+
+.order-admin-status:contains("HUY") {
+    background-color: #dc3545;
+    /* Đỏ */
+}
+
+/* Nút chi tiết */
+.order-admin-detail-button,
+.order-admin-update-button,
+.order-admin-delete-button {
+    padding        : 5px 10px;
+    margin-right   : 5px;
+    font-size      : 12px;
+    color          : rgb(16, 16, 16);
+    text-decoration: none;
+    text-align     : center;
+    text-align     : center;
+    cursor         : pointer;
+    border-radius  : 3px;
+    text-transform : capitalize;
+
+}
+
+/* Nút chi tiết */
+.order-admin-detail-button {
+    background-color: #007bff;
+}
+
+.order-admin-update-button {
+    background-color: #28a745;
+}
+
+.order-admin-delete-button {
+    background-color: #dc3545;
+}
+
+/* Hover hiệu ứng */
+.order-admin-detail-button:hover,
+.order-admin-update-button:hover,
+.order-admin-delete-button:hover {
+    opacity: 0.8;
+}

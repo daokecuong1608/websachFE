@@ -38,7 +38,7 @@ const Sidebar: React.FC = () => {
                     <div className="menu-item">
                         <button>Quản lý hình thức thanh toán</button>
                         <ul className="submenu">
-                            <li><Link to="/admin/payment">Xem chi tiết</Link></li>
+                            <li><Link to="/admin/payment">Xem chi tiết </Link></li>
                             <li><Link to="/admin/themHinhThucThanhToan">Thêm hình thức</Link></li>
                         </ul>
                     </div>
@@ -47,11 +47,12 @@ const Sidebar: React.FC = () => {
                     <div className="menu-item">
                         <button>Quản lý sản phẩm</button>
                         <ul className="submenu">
-                            <li><Link to="/admin/products">Xem chi tiết</Link></li>
+                            <li><Link to="/admin/products">Xem chi tiết sản phẩmp</Link></li>
                             <li><Link to="/admin/themSach">Thêm sản phẩm</Link></li>
                         </ul>
                     </div>
                 </li>
+
                 <li>
                     <div className="menu-item">
                         <button>Quản lý hình ảnh</button>
@@ -59,6 +60,11 @@ const Sidebar: React.FC = () => {
                             <li><Link to="/admin/hinh-anh">Xem chi tiết hình ảnh</Link></li>
                             <li><Link to="/admin/themHinhAnh">Thêm hình ảnh</Link></li>
                         </ul>
+                    </div>
+                </li>
+                <li>
+                    <div className="menu-item">
+                        <button><Link to="/admin/order">Quản lý đơn hàng</Link></button>
                     </div>
                 </li>
 

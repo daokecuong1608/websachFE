@@ -34,6 +34,10 @@ import UpdatePaymentMethods_Admin from './layout/admin/UpdatePaymentMethods';
 import Products_Admin from './layout/admin/Products';
 import UpdateProduct from './layout/admin/UpdateProduct';
 import UpdateProduct_Admin from './layout/admin/UpdateProduct';
+import Dashboard_Admin from './layout/admin/Dashboard';
+import Order_Admin from './layout/admin/Order ';
+import UpdateOrder_Admin from './layout/admin/UpdateOrder';
+import OrderDetail_Admin from './layout/admin/OrderDetail';
 
 function App() {
 
@@ -65,7 +69,7 @@ function App() {
           <Route path="/order-detail-page/:maDonhang" element={<OrderDetailPage />} />
           <Route path="/thongTinTaiKhoan" element={<ThongTinTaiKhoan />} />
 
-          <Route path="/admin/dash-board" element={<Layout><Dashboard /></Layout>} />
+          <Route path="/admin/dash-board" element={<Layout><Dashboard_Admin /></Layout>} />
           <Route path="/admin/categories" element={<Layout><Categories_Admin /></Layout>} />
           <Route path="/admin/delivery" element={<Layout><DeliveryMethods_Admin /></Layout>} />
           <Route path="/admin/payment" element={<Layout><PaymentMethods_Admin /></Layout>} />
@@ -79,6 +83,9 @@ function App() {
           <Route path='/admin/themSach' element={<Layout><SachForm_Admin /></Layout>} />
           <Route path='/admin/themHinhAnh' element={<Layout><ThemHinhAnh_Admin /></Layout>} />
           <Route path='/admin/update-product/:maSach' element={<Layout><UpdateProduct_Admin /></Layout>} />
+          <Route path='/admin/order' element={<Layout><Order_Admin /></Layout>} />
+          <Route path='/admin/update-order/:maDonHang' element={<Layout><UpdateOrder_Admin /></Layout>} />
+          <Route path='/admin/order-detail/:maDonHang' element={<Layout><OrderDetail_Admin /></Layout>} />
 
 
         </Routes>

@@ -1,0 +1,47 @@
+.update-order-container {
+    padding         : 20px;
+    max-width       : 1000px;
+    margin          : 0 auto;
+    background-color: #fff;
+    border-radius   : 8px;
+    box-shadow      : 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align   : center;
+    margin-bottom: 30px;
+    color        : #333;
+    font-size    : 24px;
+}
+
+.error {
+    color        : red;
+    text-align   : center;
+    margin-bottom: 20px;
+    font-size    : 14px;
+}
+
+.order-form {
+    display           : flex;
+    gap               : 30px;
+    /* flex-direction : column; */
+    /* Chỉnh theo dạng hàng dọc */
+    justify-content   : flex-start;
+}
+
+.order-form-left,
+.order-form-right {
+    flex      : 1;
+    padding   : 20px;
+    box-sizing: border-box;
+}
+
+/* Add border-right for left section */
+.order-form-left {
+    border-right : 1px solid #ddd;
+    padding-right: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
