@@ -52,6 +52,17 @@ const Sidebar: React.FC = () => {
                         </ul>
                     </div>
                 </li>
+                <li>
+                    <div className="menu-item">
+                        <button>Quản lý hình ảnh</button>
+                        <ul className="submenu">
+                            <li><Link to="/admin/hinh-anh">Xem chi tiết hình ảnh</Link></li>
+                            <li><Link to="/admin/themHinhAnh">Thêm hình ảnh</Link></li>
+                        </ul>
+                    </div>
+                </li>
+
+
             </ul>
             <button className="logout-btn" onClick={handleLogout}>Logout</button>
         </div>

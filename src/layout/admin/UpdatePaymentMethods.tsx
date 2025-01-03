@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import request from "../../utils/request";
 import "./css/UpdatePaymentMethods.css";
+import RequireAdmin from "./RequireAdmin";
 
 interface PaymentMethods {
     maHinhThucThanhToan: number;
@@ -23,7 +24,11 @@ const UpdatePaymentMethods: React.FC = () => {
     const fetchPaymentMethod = async () => {
         setLoading(true);
         try {
-            const response = await request.get(`/api/hinh-thuc-thanh-toan/${maHinhThucThanhToan}`);
+            const response = await request.get(`/api/hinh-thuc-thanh-toan/${maHinhThucThanhToan}`, {
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+                },
+            });
             setPaymentMethod(response.data);
             setError(null);
         } catch (error) {
@@ -46,9 +51,13 @@ const UpdatePaymentMethods: React.FC = () => {
             const response = await request.put(`/api/hinh-thuc-thanh-toan/${paymentMethod.maHinhThucThanhToan}`, {
                 tenHinhThucThanhToan: paymentMethod.tenHinhThucThanhToan,
                 chiPhiThanhToan: paymentMethod.chiPhiThanhToan
+            }, {
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+                },
             });
             alert('Cập nhật thành công!');
-            navigate('/admin/payment-methods'); // Quay lại danh sách hình thức thanh toán
+            navigate('/admin/payment'); // Quay lại danh sách hình thức thanh toán
         } catch (error) {
             console.error('Lỗi khi cập nhật hình thức thanh toán:', error);
             setError('Không thể cập nhật hình thức thanh toán. Vui lòng thử lại sau.');
@@ -95,5 +104,5 @@ const UpdatePaymentMethods: React.FC = () => {
         </div>
     );
 }
-
-export default UpdatePaymentMethods;
+const UpdatePaymentMethods_Admin = RequireAdmin(UpdatePaymentMethods)
+export default UpdatePaymentMethods_Admin;

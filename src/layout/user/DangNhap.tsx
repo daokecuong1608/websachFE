@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { GoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
@@ -24,6 +24,13 @@ const DangNhap = () => {
 
     const navigate = useNavigate();
 
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            // Nếu đã đăng nhập, chuyển hướng về trang chủ hoặc trang phù hợp
+            navigate('/');
+        }
+    }, [navigate]);
 
     const handleLogin = () => {
         const loginRequest = {
@@ -60,6 +67,7 @@ const DangNhap = () => {
                     console.log(decodedToken);
 
                     const isAdmin = decodedToken.isAdmin;
+                    console.log("isAdmin : " + isAdmin);
                     if (isAdmin) {
                         navigate("/admin/dash-board")
                         return;

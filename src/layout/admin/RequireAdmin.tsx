@@ -29,7 +29,7 @@ const RequireAdmin = <P extends object>(WrappedComponent: React.ComponentType<P>
 
                 //lấy thông tin cụ thể
                 const isAdmin = decodedToken.isAdmin;
-
+                console.log("isAdmin : " + isAdmin);
                 //kiểm tra không phải admin 
                 if (!isAdmin) {
                     navigate("/loi_403")

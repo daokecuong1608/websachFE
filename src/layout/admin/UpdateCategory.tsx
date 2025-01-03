@@ -2,6 +2,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import './css/UpdateCategory.css';
 import { useEffect, useState } from 'react';
 import request from '../../utils/request';
+import RequireAdmin from './RequireAdmin';
 
 const UpdateCategory: React.FC = () => {
     const { maTheLoai } = useParams<{ maTheLoai: string }>(); // Lấy maTheLoai từ URL params
@@ -19,7 +20,11 @@ const UpdateCategory: React.FC = () => {
     const fetchCategory = async () => {
         setLoading(true);
         try {
-            const response = await request.get(`/api/the-loai/${maTheLoai}`);
+            const response = await request.get(`/api/the-loai/${maTheLoai}`, {
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+                },
+            });
             setTenTheLoai(response.data.tenTheLoai); // Gán tên thể loại vào state
             setError(null); // Reset lỗi
         } catch (error) {
@@ -36,11 +41,14 @@ const UpdateCategory: React.FC = () => {
             alert('Tên thể loại không được để trống.');
             return;
         }
-
         setLoading(true); // Bật trạng thái tải
         try {
             const categoryData = { tenTheLoai }; // Gửi tên thể loại vào trong body
-            await request.put(`/api/the-loai/${maTheLoai}`, categoryData); // Gửi PUT request với dữ liệu
+            await request.put(`/api/the-loai/${maTheLoai}`, categoryData, {
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+                },
+            }); // Gửi PUT request với dữ liệu
             alert('Cập nhật thành công!');
             navigate('/admin/categories'); // Điều hướng về trang danh sách thể loại
         } catch (error) {
@@ -89,5 +97,5 @@ const UpdateCategory: React.FC = () => {
         </div>
     );
 };
-
-export default UpdateCategory;
+const UpdateCategory_Admin = RequireAdmin(UpdateCategory)
+export default UpdateCategory_Admin;

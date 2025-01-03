@@ -1,0 +1,70 @@
+/* General styling for the form container */
+.sach-form-container {
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+    height         : 100vh;
+    padding        : 20px;
+}
+
+/* Wrapper for the form */
+.sach-form-wrapper {
+    width        : 100%;
+    max-width    : 800px;
+    background   : #fff;
+    padding      : 20px;
+    border-radius: 8px;
+    box-shadow   : 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Title of the form */
+.sach-form-wrapper h1 {
+    text-align   : center;
+    margin-bottom: 20px;
+}
+
+/* Form styling */
+.sach-form {
+    display       : flex;
+    flex-direction: column;
+    gap           : 15px;
+}
+
+/* Styling for form groups with label and input in one line */
+.sach-form-group {
+    display    : flex;
+    align-items: center;
+    gap        : 10px;
+}
+
+/* Style labels for alignment */
+.sach-form-group label {
+    width      : 150px;
+    /* Adjust this as needed */
+    font-weight: bold;
+    text-align : right;
+}
+
+/* Style inputs to take up the remaining space */
+.sach-form-group .sach-input {
+    flex         : 1;
+    padding      : 8px;
+    border-radius: 4px;
+    border       : 1px solid #ccc;
+}
+
+/* Button style */
+.sach-btn.sach-submit-btn {
+    background-color: #007bff;
+    color           : white;
+    border          : none;
+    padding         : 10px 20px;
+    border-radius   : 4px;
+    cursor          : pointer;
+    font-size       : 16px;
+    transition      : background-color 0.3s ease;
+}
+
+.sach-btn.sach-submit-btn:hover {
+    background-color: #0056b3;
+}

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import request from "../../utils/request";
 import "./css/UpdateDeliveryMethod.css";
+import RequireAdmin from "./RequireAdmin";
 
 interface DeliveryMethod {
     maHinhThucGiaoHang: number;
@@ -24,7 +25,11 @@ const UpdateDeliveryMethod: React.FC = () => {
     const fetchDeliveryMethod = async () => {
         setLoading(true);
         try {
-            const response = await request.get(`/api/hinh-thuc-giao-hang/${maHinhThucGiaoHang}`);
+            const response = await request.get(`/api/hinh-thuc-giao-hang/${maHinhThucGiaoHang}`, {
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+                },
+            });
             setDeliveryMethod(response.data); // Gán dữ liệu vào state
             setError(null); // Reset lỗi
         } catch (error) {
@@ -47,6 +52,10 @@ const UpdateDeliveryMethod: React.FC = () => {
             await request.put(`/api/hinh-thuc-giao-hang/${deliveryMethod.maHinhThucGiaoHang}`, {
                 tenHinhThucGiaoHang: deliveryMethod.tenHinhThucGiaoHang,
                 chiPhiGiaoHang: deliveryMethod.chiPhiGiaoHang
+            }, {
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+                },
             });
             alert('Cập nhật thành công!');
             navigate('/admin/delivery'); // Điều hướng về danh sách hình thức giao hàng
@@ -109,5 +118,5 @@ const UpdateDeliveryMethod: React.FC = () => {
         </div>
     );
 };
-
-export default UpdateDeliveryMethod;
+const UpdateDeliveryMethod_Admin = RequireAdmin(UpdateDeliveryMethod);
+export default UpdateDeliveryMethod_Admin;

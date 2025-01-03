@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import request from "../../utils/request";
 import "./css/Categories.css";
+import RequireAdmin from "./RequireAdmin";
 
 interface Category {
     maTheLoai: number;
@@ -19,7 +20,11 @@ const Categories: React.FC = () => {
     const fetchCategories = async () => {
         setLoading(true);
         try {
-            const response = await request.get('/api/the-loai');
+            const response = await request.get('/api/the-loai', {
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+                },
+            });
             setCategories(response.data);
             setError(null);
         } catch (error) {
@@ -39,7 +44,11 @@ const Categories: React.FC = () => {
         if (window.confirm("Bạn có chắc chắn muốn xóa thể loại này?")) {
             setLoading(true);
             try {
-                await request.delete(`/api/the-loai/${maTheLoai}`);
+                await request.delete(`/api/the-loai/${maTheLoai}`, {
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem('token')}`
+                    },
+                });
                 // Sau khi xóa thành công, tải lại danh sách thể loại
                 fetchCategories();
             } catch (error) {
@@ -93,4 +102,6 @@ const Categories: React.FC = () => {
     );
 };
 
-export default Categories;
+const Categories_Admin = RequireAdmin(Categories);
+export default Categories_Admin;
+

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import request from "../../utils/request";
 import "./css/PaymentMethods.css"; // Đảm bảo có tệp CSS
+import RequireAdmin from "./RequireAdmin";
 
 interface PaymentMethodsProps {
     maHinhThucThanhToan: number;
@@ -20,7 +21,11 @@ const PaymentMethods: React.FC = () => {
     const fetchPaymentMethods = async () => {
         setLoading(true);
         try {
-            const response = await request.get('/api/hinh-thuc-thanh-toan');
+            const response = await request.get('/api/hinh-thuc-thanh-toan', {
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+                },
+            });
             setPaymentMethods(response.data);
             setError(null);
         } catch (err) {
@@ -88,5 +93,5 @@ const PaymentMethods: React.FC = () => {
         </div>
     );
 };
-
-export default PaymentMethods;
+const PaymentMethods_Admin = RequireAdmin(PaymentMethods)
+export default PaymentMethods_Admin;

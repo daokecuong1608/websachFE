@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import request from "../../utils/request";
 import "./css/DeliveryMethods.css";
+import RequireAdmin from "./RequireAdmin";
 
 interface DeliveryMethodsProps {
     maHinhThucGiaoHang: number;
@@ -20,7 +21,11 @@ const DeliveryMethods: React.FC = () => {
     const fetchDeliveryMethods = async () => {
         setLoading(true);
         try {
-            const response = await request.get('/api/hinh-thuc-giao-hang');
+            const response = await request.get('/api/hinh-thuc-giao-hang', {
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+                },
+            });
             setDeliveryMethods(response.data);
             setError(null);
         } catch (error) {
@@ -40,7 +45,6 @@ const DeliveryMethods: React.FC = () => {
             } catch (error) {
                 console.error('Lỗi khi xóa hình thức giao hàng:', error);
                 setError('Không thể xóa thể loại. Vui lòng thử lại sau.');
-
             } finally {
                 setLoading(false);
             }
@@ -90,5 +94,5 @@ const DeliveryMethods: React.FC = () => {
         </div>
     );
 };
-
-export default DeliveryMethods;
+const DeliveryMethods_Admin = RequireAdmin(DeliveryMethods)
+export default DeliveryMethods_Admin;
